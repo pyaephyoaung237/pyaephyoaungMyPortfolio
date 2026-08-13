@@ -26,7 +26,8 @@ export default function Navbar() {
           }
         })
       },
-      { rootMargin: '-40% 0px -50% 0px' }
+      // Adjusted rootMargin to allow sections (especially the last one) to activate easier
+      { rootMargin: '-20% 0px -35% 0px', threshold: 0.1 }
     )
 
     sections.forEach((s) => observer.observe(s))

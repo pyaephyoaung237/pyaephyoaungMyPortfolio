@@ -1,5 +1,6 @@
 import { education } from '../data'
 import useScrollAnimation from '../hooks/useScrollAnimation'
+import { GraduationCap } from 'lucide-react'
 
 function EducationCard({ item, index }) {
   const fromSide = index % 2 === 0 ? 'reveal-left' : 'reveal-right'
@@ -47,13 +48,20 @@ export default function Education() {
     <section id="education" className="bg-gray-50 py-10 px-5 md:px-10">
       <div className="max-w-5xl mx-auto">
         <div ref={headingRef} className={`reveal ${headingVisible ? 'is-visible' : ''} text-center mb-4`}>
-          <h2 className="text-center font-display font-bold text-2xl md:text-3xl text-black mb-12 relative pb-4">
-            <span className="text-navy-600">Education</span>
-            <span
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-1 rounded-full"
-              style={{ backgroundColor: '#ff5e3a' }}
-            ></span>
-          </h2>
+          {/* Title with GraduationCap icon in front */}
+          <div className="text-center mb-12">
+            <h2 className="relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl text-black">
+              <span className="inline-flex items-center justify-center gap-2.5">
+                <GraduationCap className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} />
+                <span className="text-navy-600">Education</span>
+              </span>
+              <span
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-1 rounded-full"
+                style={{ backgroundColor: '#ff5e3a' }}
+              ></span>
+            </h2>
+          </div>
+
           <p className="text-gray-900 mt-2">
             Education is a journey of learning, growing, and developing the skills to build a better future.
           </p>

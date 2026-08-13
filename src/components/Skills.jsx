@@ -2,9 +2,10 @@ import { skills } from '../data'
 import useScrollAnimation from '../hooks/useScrollAnimation'
 import { 
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaBootstrap, 
-  FaJava, FaPhp, FaDocker, FaAws, FaGithub, FaLinux, FaWindows 
+  FaJava, FaPhp, FaDocker, FaAws, FaGithub, FaLinux, FaWindows, FaApple 
 } from 'react-icons/fa'
-import { SiTailwindcss, SiMysql, SiPostgresql, SiMongodb, SiKubernetes } from 'react-icons/si'
+import { SiTailwindcss, SiMysql, SiPostgresql, SiMongodb, SiKubernetes, SiSpring, SiLaravel, SiRedis } from 'react-icons/si'
+import { Code } from 'lucide-react'
 
 const iconMap = {
   'HTML': { icon: <FaHtml5 />, color: 'text-orange-500', bg: 'bg-orange-50' },
@@ -15,9 +16,12 @@ const iconMap = {
   'Tailwind CSS': { icon: <SiTailwindcss />, color: 'text-cyan-500', bg: 'bg-cyan-50' },
   'Java': { icon: <FaJava />, color: 'text-red-600', bg: 'bg-red-50' },
   'PHP': { icon: <FaPhp />, color: 'text-indigo-500', bg: 'bg-indigo-50' },
+  'Laravel': { icon: <SiLaravel />, color: 'text-red-600', bg: 'bg-red-50' },
+  'SpringBoot': { icon: <SiSpring />, color: 'text-green-600', bg: 'bg-green-50' },
   'MySQL': { icon: <SiMysql />, color: 'text-blue-600', bg: 'bg-blue-50' },
   'PostgreSQL': { icon: <SiPostgresql />, color: 'text-blue-400', bg: 'bg-blue-50' },
   'MongoDB': { icon: <SiMongodb />, color: 'text-green-500', bg: 'bg-green-50' },
+  'Redis': { icon: <SiRedis />, color: 'text-red-600', bg: 'bg-red-50' },
   'Docker': { icon: <FaDocker />, color: 'text-blue-500', bg: 'bg-blue-50' },
   'AWS': { icon: <FaAws />, color: 'text-amber-500', bg: 'bg-amber-50' },
   'GitHub': { icon: <FaGithub />, color: 'text-gray-900', bg: 'bg-gray-100' },
@@ -25,12 +29,13 @@ const iconMap = {
   'shell script': { icon: '</>', color: 'text-emerald-600', bg: 'bg-emerald-50' },
   'Linux': { icon: <FaLinux />, color: 'text-yellow-800', bg: 'bg-yellow-50' },
   'Windows': { icon: <FaWindows />, color: 'text-sky-500', bg: 'bg-sky-50' },
+  'MacOS': { icon: <FaApple />, color: 'text-gray-800', bg: 'bg-gray-100' },
 }
 
 const groupLabels = {
   frontend: 'Development',
   backend: 'Development',
-  database: 'Data & Databases',
+  database: 'Cache & Databases',
   devops: 'DevOps & Systems',
 }
 
@@ -70,13 +75,23 @@ export default function Skills() {
   return (
     <section id="skills" className="bg-white py-10 px-5 md:px-10">
       <div className="max-w-7xl mx-auto">
-         <h2 className="text-center font-display font-bold text-2xl md:text-3xl text-black mb-12 relative pb-4">
-          <span className="text-navy-600">Technical Skills</span>
-          <span
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-1 rounded-full"
-            style={{ backgroundColor: '#ff5e3a' }}
-          ></span>
-        </h2>
+         {/* Title with Code icon in front */}
+         <div className="text-center mb-4">
+           <h2 
+             ref={headingRef}
+             className={`reveal ${headingVisible ? 'is-visible' : ''} relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl text-black`}
+           >
+             <span className="inline-flex items-center justify-center gap-2.5">
+               <Code className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} />
+               <span className="text-navy-600">Technical Skills</span>
+             </span>
+             <span
+               className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-1 rounded-full"
+               style={{ backgroundColor: '#ff5e3a' }}
+             ></span>
+           </h2>
+         </div>
+
         <p className="text-center text-gray-900 mb-12 md:text-base">
           The tools and technologies I work with on a daily basis
         </p>

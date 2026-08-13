@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { achievements } from '../data'
 import useScrollAnimation from '../hooks/useScrollAnimation'
 import { Eye, X } from 'lucide-react'
+import { Award } from 'lucide-react'
 
 function AchievementCard({ item, index, onViewImage }) {
   const [ref, isVisible] = useScrollAnimation({ threshold: 0.2 })
@@ -58,14 +59,20 @@ export default function Achievement() {
     <section id="achievement" className="py-10 px-5 md:px-10 relative ">
       <div className="max-w-7xl mx-auto">
         <div ref={headingRef} className={`reveal ${headingVisible ? 'is-visible' : ''} text-center mb-4`}>
-          <h2 className="font-display font-bold text-2xl md:text-3xl text-navy-600 relative pb-4 inline-block">
-             <span className="text-navy-600">Achievement</span>
-            <span
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 rounded-full"
-              style={{ backgroundColor: '#ff5e3a' }}
-            ></span>
-          </h2>
-          <p className="text-gray-600 text-sm mt-2">Comfort is the enemy of achievement.</p>
+          {/* Title with Award icon in front */}
+          <div className="text-center mb-2">
+            <h2 className="relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl text-black">
+              <span className="inline-flex items-center justify-center gap-2.5">
+                <Award className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} />
+                <span className="text-navy-600">Achievement</span>
+              </span>
+              <span
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 rounded-full"
+                style={{ backgroundColor: '#ff5e3a' }}
+              ></span>
+            </h2>
+          </div>
+          <p className="text-gray-600 text-sm mt-2">No achievement comes without challenges.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">

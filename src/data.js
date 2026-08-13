@@ -4,7 +4,7 @@ import yadanarbon from './assets/yadanarbon.jpg';
 import ip from './assets/itpecIp.jpg';
 import fe from './assets/itpecFe.jpg';
 import bestOjt from './assets/bestOjt.jpg';
-import internshipCompletion from './assets/internComplete.jpg';
+import internshipCompletion from './assets/internCompleted.jpg';
 import guitarhub from './assets/guitar.jpg';
 import mangatai from './assets/manga.jpg';
 import saleway from './assets/saleway.jpg';
@@ -27,7 +27,7 @@ export const profile = {
   interests: 'devops engineering, cloud computing',
   socials: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/pyae-phyo-aung-1a3923346', text: 'IN' },
-    { label: 'GitHub', href: 'https://github.com/pyaephyoaung2377', text: 'GH' },
+    { label: 'GitHub', href: 'https://github.com/pyaephyoaung237', text: 'GH' },
     { label: 'Twitter', href: '#', text: 'TW' },
     { label: 'Email', href: 'mailto:pyaephyoaung2377@gmail.com', text: '@' },
   ],
@@ -42,6 +42,7 @@ export const navLinks = [
   { label: 'Projects', href: '#work' },
   { label: 'Experience', href: '#experience' },
   { label: 'Achievement', href: '#achievement' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export const skills = [
@@ -53,9 +54,12 @@ export const skills = [
   { name: 'Tailwind CSS', group: 'frontend' },
   { name: 'Java', group: 'backend' },
   { name: 'PHP', group: 'backend' },
+  { name: 'Laravel', group: 'backend' },
+  { name: 'SpringBoot', group: 'backend' },
   { name: 'MySQL', group: 'database' },
   { name: 'PostgreSQL', group: 'database' },
   { name: 'MongoDB', group: 'database' },
+  { name: 'Redis', group: 'database' },
   { name: 'Docker', group: 'devops' },
   { name: 'AWS', group: 'devops' },
   { name: 'GitHub', group: 'devops' },
@@ -63,6 +67,7 @@ export const skills = [
   { name: 'shell script', group: 'devops' },
   { name: 'Linux', group: 'devops' },
   { name: 'Windows', group: 'devops' },
+  { name: 'MacOS', group: 'devops' },
 ]
 
 export const education = [

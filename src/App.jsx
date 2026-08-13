@@ -7,6 +7,7 @@ import Work from './components/Work'
 import Experience from './components/Experience'
 import Achievement from './components/Achievement'
 import Footer from './components/Footer'
+import Contact from './components/Contact'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Work />
         <Experience />
         <Achievement />
+        <Contact />
       </main>
       <Footer />
     </div>

@@ -8,6 +8,7 @@ import {
   FaLayerGroup,
   FaTimes,
 } from 'react-icons/fa'
+import { FolderGit2 } from 'lucide-react'
 
 function WorkCard({ item, index, onViewProject }) {
   const [ref, isVisible] = useScrollAnimation({ threshold: 0.2 })
@@ -17,7 +18,7 @@ function WorkCard({ item, index, onViewProject }) {
       ref={ref}
       className={`reveal ${
         isVisible ? 'is-visible' : ''
-      } group relative bg-white border-2 border-navy-600 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col`}
+      } group relative bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col`}
       style={{ transitionDelay: `${(index % 6) * 70}ms` }}
     >
       {/* Top Banner Area */}
@@ -86,7 +87,7 @@ function ProjectDetailModal({ project, onClose }) {
     >
       {/* Modal */}
       <div
-        className="relative w-[92%] sm:w-full max-w-2xl bg-white border-2 border-navy-600 rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl max-h-[82vh] sm:max-h-[90vh] overflow-y-auto"
+        className="relative w-[92%] sm:w-full max-w-2xl bg-white border border-gray-200 rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl max-h-[82vh] sm:max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -99,16 +100,12 @@ function ProjectDetailModal({ project, onClose }) {
         </button>
 
         {/* Project Title & Tag */}
-        <div className="mb-5 sm:mb-6 pb-4 border-b-2 border-navy-600 flex flex-col sm:flex-row sm:items-center justify-between gap-2 pr-10">
+        <div className="mb-5 sm:mb-6 pb-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 pr-10">
           <div>
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-navy-600">
               {project.title}
             </h3>
-
-          
           </div>
-
-          
         </div>
 
         {/* System Overview */}
@@ -173,22 +170,25 @@ export default function Work() {
     >
       <div className="max-w-7xl mx-auto">
 
-        {/* Section Heading */}
-        <h2
-          ref={headingRef}
-          className={`reveal ${
-            headingVisible ? 'is-visible' : ''
-          } text-center font-display font-bold text-2xl md:text-3xl text-black mb-12 relative pb-4`}
-        >
-          <span className="text-navy-600">
-            My Projects
-          </span>
+        {/* Section Heading with FolderGit2 icon */}
+        <div className="text-center mb-12">
+          <h2
+            ref={headingRef}
+            className={`reveal ${
+              headingVisible ? 'is-visible' : ''
+            } relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl text-black`}
+          >
+            <span className="inline-flex items-center justify-center gap-2.5">
+              <FolderGit2 className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} />
+              <span className="text-navy-600">Projects</span>
+            </span>
 
-          <span
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 rounded-full"
-            style={{ backgroundColor: '#ff5e3a' }}
-          />
-        </h2>
+            <span
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 rounded-full"
+              style={{ backgroundColor: '#ff5e3a' }}
+            />
+          </h2>
+        </div>
 
         {/* Project Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

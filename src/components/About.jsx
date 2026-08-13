@@ -5,6 +5,7 @@ import {
   Phone,
   MapPin,
   Lightbulb,
+  User
 } from 'lucide-react'
 
 export default function About() {
@@ -12,14 +13,19 @@ export default function About() {
     <section id="about" className="bg-white py-10 px-5 md:px-10">
       <div className="max-w-4xl mx-auto">
 
-        {/* Title */}
-        <h2 className="text-center font-display font-bold text-2xl md:text-3xl text-black mb-12 relative pb-4">
-          <span className="text-navy-600">About</span>
-          <span
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-1 rounded-full"
-            style={{ backgroundColor: '#ff5e3a' }}
-          ></span>
-        </h2>
+      {/* Title with Info icon in front */}
+        <div className="text-center mb-12">
+          <h2 className="relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl text-black">
+            <span className="inline-flex items-center justify-center gap-2.5">
+              <User className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} />
+              <span className="text-navy-600">About</span>
+            </span>
+            <span
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-1 rounded-full"
+              style={{ backgroundColor: '#ff5e3a' }}
+            ></span>
+          </h2>
+        </div>
 
         {/* Content */}
         <div className="text-center">
