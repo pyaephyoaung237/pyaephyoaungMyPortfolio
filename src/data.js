@@ -1,6 +1,14 @@
 import profileImage from './assets/ppa.jpeg';
 import gic from './assets/gic.png';
 import yadanarbon from './assets/yadanarbon.jpg';
+import ip from './assets/itpecIp.jpg';
+import fe from './assets/itpecFe.jpg';
+import bestOjt from './assets/bestOjt.jpg';
+import internshipCompletion from './assets/internComplete.jpg';
+import guitarhub from './assets/guitar.jpg';
+import mangatai from './assets/manga.jpg';
+import saleway from './assets/saleway.jpg';
+
 export const profile = {
   name: 'Pyae Phyo Aung',
   firstName: 'Pyae',
@@ -91,7 +99,7 @@ export const work = [
     title: 'GuitarHub',
     tag: 'Ecommerce',
     category: 'Web Application',
-    image: '/path-to-your-image/guitarhub.png', // Replace with your actual image path or URL
+    image: guitarhub,
     overview: 'A full-featured e-commerce web application dedicated to buying and selling guitars, amplifiers, and music gear with secure cart management and checkout features.',
     keyFeatures: [
       'Product catalog with advanced sorting and filter options',
@@ -105,7 +113,7 @@ export const work = [
     title: 'MangaTai',
     tag: 'MangaReader',
     category: 'Content Platform',
-    image: '/path-to-your-image/mangatai.png',
+    image: mangatai,
     overview: 'A comprehensive manga reading and uploading platform equipped with an admin dashboard, user coin transaction system, gift boxes, and chapter management.',
     keyFeatures: [
       'Interactive manga reader interface with smooth page navigation',
@@ -119,7 +127,7 @@ export const work = [
     title: 'Saleway Tracking',
     tag: 'Inhouse System for sale distribution',
     category: 'Enterprise System',
-    image: '/path-to-your-image/saleway.png',
+    image: saleway,
     overview: 'An internal distribution and sales tracking application designed to monitor inventory movement, field sales updates, and distribution metrics efficiently.',
     keyFeatures: [
       'Real-time distribution and sales activity tracking',
@@ -151,10 +159,28 @@ export const experience = [
 ]
 
 export const achievements = [
-  { title: 'AWS Solutions Architect', org: 'Amazon Web Services' },
-  { title: 'Professional Scrum Master II', org: 'Scrum.org' },
-  { title: 'Professional Scrum Master I', org: 'Scrum.org' },
-  { title: 'Certificate of Appreciation', org: 'Conference Presentation' },
-  { title: 'Best Student Award', org: 'University Lab' },
-  { title: 'IT Training Completion', org: 'Advanced IT Training Course' },
+  {
+    title: 'ITPEC IP Certificate',
+    org: 'ITPEC',
+    date:'2024',
+    image: ip,
+  },
+  {
+    title: 'ITPEC FE Certificate',
+    org: 'ITPEC',
+    date:'2026',
+    image: fe,
+  },
+  {
+    title: 'Best OJT Project Award',
+    org: 'GIC Academy',
+    date:'2026',
+    image: bestOjt,
+  },
+  {
+    title: 'Internship Completion Certificate',
+    org: 'GIC Company',
+    date:'2026',
+    image: internshipCompletion,
+  },
 ]

@@ -1,7 +1,13 @@
 import { useState } from 'react'
 import { work } from '../data'
 import useScrollAnimation from '../hooks/useScrollAnimation'
-import { FaArrowLeft, FaExternalLinkAlt, FaCode, FaCheckCircle, FaLayerGroup, FaImage } from 'react-icons/fa'
+import {
+  FaExternalLinkAlt,
+  FaCode,
+  FaCheckCircle,
+  FaLayerGroup,
+  FaTimes,
+} from 'react-icons/fa'
 
 function WorkCard({ item, index, onViewProject }) {
   const [ref, isVisible] = useScrollAnimation({ threshold: 0.2 })
@@ -9,16 +15,18 @@ function WorkCard({ item, index, onViewProject }) {
   return (
     <div
       ref={ref}
-      className={`reveal ${isVisible ? 'is-visible' : ''} group relative bg-white border-2 border-navy-600 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col`}
+      className={`reveal ${
+        isVisible ? 'is-visible' : ''
+      } group relative bg-white border-2 border-navy-600 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col`}
       style={{ transitionDelay: `${(index % 6) * 70}ms` }}
     >
-      {/* Top Banner Area with Image or Initial fallback */}
+      {/* Top Banner Area */}
       <div className="h-44 bg-navy-50 flex items-center justify-center relative overflow-hidden">
         {item.image ? (
-          <img 
-            src={item.image} 
-            alt={item.title} 
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
           <span className="text-navy-600 font-display font-bold text-5xl opacity-40 group-hover:scale-110 transition-transform duration-300">
@@ -26,8 +34,8 @@ function WorkCard({ item, index, onViewProject }) {
           </span>
         )}
 
-        {/* Hover Overlay with View Button */}
-        <div className="absolute inset-0 bg-navy-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 bg-navy-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <button
             onClick={() => onViewProject(item)}
             className="px-5 py-2.5 bg-white text-navy-600 font-semibold rounded-lg shadow-md hover:bg-navy-600 hover:text-white transition-colors duration-300 flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0"
@@ -39,17 +47,28 @@ function WorkCard({ item, index, onViewProject }) {
       </div>
 
       {/* Content Section */}
-      <div className="bg-navy-600 px-5 py-4 flex-1 flex flex-col justify-between">
+      <div className="bg-white px-5 py-4 flex-1 flex flex-col justify-between border-t border-gray-100">
         <div>
-          <p className="text-white font-bold text-lg">{item.title}</p>
-          <p className="text-navy-100/80 text-xs mt-1">{item.tag}</p>
+          <p className="text-navy-600 font-bold text-lg">
+            {item.title}
+          </p>
+
+          <p className="text-gray-600 text-xs mt-1">
+            {item.tag}
+          </p>
         </div>
 
-        {/* Language/Tech Badges */}
-        <div className="mt-4 pt-3 border-t border-navy-500 flex flex-wrap gap-1.5">
+        {/* Language / Tech Badges */}
+        <div className="mt-4 pt-3 border-t border-gray-100 flex flex-wrap gap-1.5">
           {item.languages?.map((lang, idx) => (
-            <span key={idx} className="text-[11px] bg-navy-700 text-navy-100 px-2 py-0.5 rounded-md flex items-center gap-1">
-              <FaCode className="text-[9px]" style={{ color: '#ff5e3a' }} />
+            <span
+              key={idx}
+              className="text-[11px] bg-gray-100 text-navy-600 px-2 py-0.5 rounded-md flex items-center gap-1 font-medium"
+            >
+              <FaCode
+                className="text-[9px]"
+                style={{ color: '#ff5e3a' }}
+              />
               {lang}
             </span>
           ))}
@@ -59,84 +78,81 @@ function WorkCard({ item, index, onViewProject }) {
   )
 }
 
-function ProjectDetailView({ project, onBack }) {
+function ProjectDetailModal({ project, onClose }) {
   return (
-    <div className="max-w-4xl mx-auto bg-white border-2 border-navy-600 rounded-2xl p-6 md:p-10 shadow-lg">
-      {/* Back Button */}
-      <button
-        onClick={onBack}
-        className="mb-8 px-4 py-2 bg-navy-600 text-white rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-black transition-colors"
+    <div
+      className="fixed inset-0 z-50 bg-black/20 flex items-center justify-center p-3 sm:p-4 overflow-y-auto"
+      onClick={onClose}
+    >
+      {/* Modal */}
+      <div
+        className="relative w-[92%] sm:w-full max-w-2xl bg-white border-2 border-navy-600 rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl max-h-[82vh] sm:max-h-[90vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
       >
-        <FaArrowLeft />
-        <span>Back to Projects</span>
-      </button>
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          aria-label="Close project details"
+          className="absolute top-3 right-3 z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-100 text-navy-600 flex items-center justify-center hover:bg-navy-600 hover:text-white transition-colors shadow-sm"
+        >
+          <FaTimes className="w-4 h-4 sm:w-5 sm:h-5" />
+        </button>
 
-      {/* Project Title & Tag */}
-      <div className="mb-6 pb-4 border-b-2 border-navy-600 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-navy-600">{project.title}</h3>
-          <p className="text-gray-600 text-sm mt-1">{project.tag}</p>
-        </div>
-        <span className="self-start sm:self-auto px-3 py-1 bg-navy-50 text-navy-600 border border-navy-600 text-xs font-semibold rounded-full">
-          {project.category}
-        </span>
-      </div>
+        {/* Project Title & Tag */}
+        <div className="mb-5 sm:mb-6 pb-4 border-b-2 border-navy-600 flex flex-col sm:flex-row sm:items-center justify-between gap-2 pr-10">
+          <div>
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-navy-600">
+              {project.title}
+            </h3>
 
-      {/* Project Image Display */}
-      <div className="mb-8 rounded-xl overflow-hidden border-2 border-navy-600 bg-gray-50">
-        {project.image ? (
-          <img 
-            src={project.image} 
-            alt={project.title} 
-            className="w-full h-64 md:h-96 object-cover" 
-          />
-        ) : (
-          <div className="w-full h-48 flex flex-col items-center justify-center text-gray-400 gap-2">
-            <FaImage className="text-4xl text-navy-300" />
-            <span className="text-sm font-medium">No Image Available</span>
+          
           </div>
-        )}
-      </div>
 
-      {/* System Overview */}
-      <div className="mb-8">
-        <h4 className="text-lg font-bold text-black mb-3 flex items-center gap-2">
-          <FaLayerGroup style={{ color: '#ff5e3a' }} />
-          System Overview
-        </h4>
-        <p className="text-gray-700 leading-relaxed bg-gray-50 p-4 rounded-xl border border-gray-200">
-          {project.overview}
-        </p>
-      </div>
-
-      {/* Key Features */}
-      <div className="mb-8">
-        <h4 className="text-lg font-bold text-black mb-4 flex items-center gap-2">
-          <FaCheckCircle style={{ color: '#ff5e3a' }} />
-          Key Features
-        </h4>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {project.keyFeatures.map((feature, index) => (
-            <div key={index} className="flex items-start gap-3 p-3 bg-navy-50/50 rounded-xl border border-navy-100">
-              <span className="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: '#ff5e3a' }}></span>
-              <span className="text-sm text-gray-800">{feature}</span>
-            </div>
-          ))}
+          
         </div>
-      </div>
 
-      {/* Technologies Used */}
-      <div>
-        <h4 className="text-lg font-bold text-black mb-3 flex items-center gap-2">
-          <FaCode style={{ color: '#ff5e3a' }} />
-          Technologies & Tools
-        </h4>
-        <div className="flex flex-wrap gap-2">
-          {project.languages.map((lang, index) => (
-            <span key={index} className="px-3 py-1 bg-navy-600 text-white text-xs font-medium rounded-lg">
-              {lang}
-            </span>
-          ))}
+        {/* System Overview */}
+        <div className="mb-5 sm:mb-6">
+          <h4 className="text-base sm:text-lg font-bold text-navy-600 mb-3 flex items-center gap-2">
+            <FaLayerGroup
+              className="flex-shrink-0"
+              style={{ color: '#ff5e3a' }}
+            />
+            System Overview
+          </h4>
+
+          <p className="text-gray-700 text-sm sm:text-base leading-relaxed bg-gray-50 p-3 sm:p-4 rounded-xl border border-gray-200">
+            {project.overview}
+          </p>
+        </div>
+
+        {/* Key Features */}
+        <div>
+          <h4 className="text-base sm:text-lg font-bold text-navy-600 mb-3 flex items-center gap-2">
+            <FaCheckCircle
+              className="flex-shrink-0"
+              style={{ color: '#ff5e3a' }}
+            />
+            Key Features
+          </h4>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+            {project.keyFeatures.map((feature, index) => (
+              <div
+                key={index}
+                className="flex items-start gap-2 sm:gap-3 p-3 bg-gray-50 rounded-xl border border-gray-200"
+              >
+                <span
+                  className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+                  style={{ backgroundColor: '#ff5e3a' }}
+                />
+
+                <span className="text-xs sm:text-sm text-gray-800 leading-relaxed">
+                  {feature}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -144,36 +160,56 @@ function ProjectDetailView({ project, onBack }) {
 }
 
 export default function Work() {
-  const [headingRef, headingVisible] = useScrollAnimation({ threshold: 0.4 })
+  const [headingRef, headingVisible] = useScrollAnimation({
+    threshold: 0.4,
+  })
+
   const [selectedProject, setSelectedProject] = useState(null)
 
   return (
-    <section id="work" className="bg-white py-10 px-5 md:px-10">
+    <section
+      id="work"
+      className="bg-white py-10 px-5 md:px-10 relative"
+    >
       <div className="max-w-7xl mx-auto">
+
+        {/* Section Heading */}
         <h2
           ref={headingRef}
-          className={`reveal ${headingVisible ? 'is-visible' : ''} text-center font-display font-bold text-2xl md:text-3xl text-black mb-12 relative pb-4`}
+          className={`reveal ${
+            headingVisible ? 'is-visible' : ''
+          } text-center font-display font-bold text-2xl md:text-3xl text-black mb-12 relative pb-4`}
         >
-          <span className="text-navy-600">My Projects</span>
-          <span 
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 rounded-full" 
+          <span className="text-navy-600">
+            My Projects
+          </span>
+
+          <span
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 rounded-full"
             style={{ backgroundColor: '#ff5e3a' }}
-          ></span>
+          />
         </h2>
 
-        {selectedProject ? (
-          <ProjectDetailView project={selectedProject} onBack={() => setSelectedProject(null)} />
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {work.map((item, i) => (
-              <WorkCard 
-                key={item.title} 
-                item={item} 
-                index={i} 
-                onViewProject={(proj) => setSelectedProject(proj)} 
-              />
-            ))}
-          </div>
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {work.map((item, i) => (
+            <WorkCard
+              key={item.title}
+              item={item}
+              index={i}
+              onViewProject={(project) =>
+                setSelectedProject(project)
+              }
+            />
+          ))}
+        </div>
+
+        {/* Project Modal */}
+        {selectedProject && (
+          <ProjectDetailModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
         )}
       </div>
     </section>
