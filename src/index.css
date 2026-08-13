@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #0c1326;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2f5c;
+  border-radius: 8px;
+}
+
+/* Reveal-on-scroll base state — JS toggles .is-visible via IntersectionObserver */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+}
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
