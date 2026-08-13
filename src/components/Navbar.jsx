@@ -26,7 +26,6 @@ export default function Navbar() {
           }
         })
       },
-      // Adjusted rootMargin to allow sections (especially the last one) to activate easier
       { rootMargin: '-20% 0px -35% 0px', threshold: 0.1 }
     )
 
@@ -34,9 +33,15 @@ export default function Navbar() {
     return () => observer.disconnect()
   }, [])
 
-  const handleLinkClick = (href) => {
+  const handleLinkClick = (e, href) => {
+    e.preventDefault()
     setIsOpen(false)
     setActive(href)
+
+    const targetElement = document.querySelector(href)
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
@@ -46,7 +51,11 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-10 h-16 md:h-20">
-        <a href="#home" className="flex items-center gap-2 font-display font-bold text-lg md:text-xl text-navy-600">
+        <a 
+          href="#home" 
+          onClick={(e) => handleLinkClick(e, '#home')}
+          className="flex items-center gap-2 font-display font-bold text-lg md:text-xl text-navy-600"
+        >
           <span className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-navy-600 text-white text-sm">
             {'</>'}
           </span>
@@ -59,7 +68,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                onClick={() => handleLinkClick(link.href)}
+                onClick={(e) => handleLinkClick(e, link.href)}
                 className={`relative font-medium text-sm tracking-wide transition-colors ${
                   active === link.href ? 'text-navy-600' : 'text-black hover:text-navy-500'
                 }`}
@@ -99,7 +108,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                onClick={() => handleLinkClick(link.href)}
+                onClick={(e) => handleLinkClick(e, link.href)}
                 className={`block py-3 font-medium text-sm border-b border-gray-100 last:border-none ${
                   active === link.href ? 'text-navy-600' : 'text-black'
                 }`}
@@ -112,8 +121,4 @@ export default function Navbar() {
       </div>
     </header>
   )
-}
-
-function profileInitialName() {
-  return 'Portfolio'
 }

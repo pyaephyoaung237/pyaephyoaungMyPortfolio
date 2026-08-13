@@ -11,6 +11,7 @@ import Contact from './components/Contact'
 
 export default function App() {
   return (
+    
     <div className="min-h-screen bg-white">
       <Navbar />
       <main>
