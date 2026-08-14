@@ -15,16 +15,16 @@ export const profile = {
   rolesList: [
     'Web development',
     'Full Stack development',
-    'Software Engineer',
+    'Software Engineering',
   ],
   tagline: 'Full Stack developer',
   profileImage: profileImage,
-  bio: `I'm a Full Stack Developer with over 1 years of experience building modern web applications from the ground up. I specialize in React, Laravel,Spring and cloud architecture, with a strong passion for creating intuitive user interfaces backed by robust, well-structured APIs.`,
+  bio: 'I\'m a Full Stack Developer focused on building modern and scalable web applications. I specialize in React, Laravel, Spring Boot, and cloud technologies, combining intuitive user interfaces with robust and well-structured backend APIs. I\'m passionate about continuous learning, problem-solving, and creating reliable solutions for real-world needs.',
   age: '—',
   email: 'pyaephyoaung2377@gmail.com',
   phone: '+959974605852',
   place: 'Mandalay, Myanmar',
-  interests: 'devops engineering, cloud computing',
+  interests: 'DevOps engineering, Cloud computing',
   socials: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/pyae-phyo-aung-1a3923346', text: 'IN' },
     { label: 'GitHub', href: 'https://github.com/pyaephyoaung237', text: 'GH' },
@@ -38,10 +38,10 @@ export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Education', href: '#education' },
   { label: 'Projects', href: '#work' },
   { label: 'Experience', href: '#experience' },
   { label: 'Achievement', href: '#achievement' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -101,6 +101,51 @@ export const education = [
 
 export const work = [
   {
+    title: 'MangaTai',
+    tag: 'MangaReader',
+    category: 'Content Platform',
+    image: mangatai,
+    overview: 'A comprehensive manga reading and uploading platform featuring free and premium content, secure authentication, virtual coin transactions, chapter management, user interactions, and an admin dashboard for managing manga, users, and platform activities.',
+
+    keyFeatures: [
+      'Free manga reading without requiring user authentication',
+      'Premium chapters accessible through virtual coin purchases',
+      'Interactive manga reader with smooth page navigation',
+      'Secure authentication with Google login and forgot-password functionality',
+      'Coin purchase and virtual currency balance system',
+      '24-hour daily gift and reward system for users',
+      'Admin and user gift management functionality',
+      'Users can comment on manga and add manga to their favorites',
+      'Admin dashboard for manga, chapter, user, coin, and gift management',
+      'Form validation and date validation for accurate and reliable user input'
+    ],
+    languages: ['Laravel', 'Docker', 'MySQL', 'Tailwind CSS', 'Google OAuth']
+  },
+  {
+    title: 'Saleway Tracking System',
+    tag: 'Inhouse System for sale distribution',
+    category: 'Enterprise System',
+    image: saleway,
+    overview: 'A comprehensive distribution and sales tracking system with dedicated user and admin panels, designed to manage field sales operations, monitor shop visits, track inventory and purchases, and record real-time GPS-based check-in and check-out activities.',
+    keyFeatures: [
+      'Dedicated user and admin panels with role-based access control',
+      'Track which shops purchased specific products and the quantities purchased',
+      'Sales history with product, quantity, shop, date, and transaction time',
+      'Real-time GPS tracking for field sales agents and registered shops',
+      'Check-in and check-out tracking with date and exact time',
+      'Distance calculation between field agents and shops',
+      'Shop visit and sales activity monitoring',
+      'Stock and inventory management with sales updates',
+      'Secure authentication with forgot-password functionality',
+      'Form validation and date validation for accurate and reliable input',
+      'Admin dashboard for sales, distribution, inventory, and activity reports',
+      'Automated activity and status logs',
+      'Test case writing and functional testing',
+      'Optimized database queries for efficient inventory and sales data lookup'
+    ],
+    languages: ['Laravel', 'React', 'MySQL', 'Tailwind CSS', 'Docker', 'Redis', 'Cobol']
+  },
+  {
     title: 'GuitarHub',
     tag: 'Ecommerce',
     category: 'Web Application',
@@ -114,41 +159,10 @@ export const work = [
     ],
     languages: ['SpringBoot', 'Blade', 'Bootstrap', 'MySQL']
   },
-  {
-    title: 'MangaTai',
-    tag: 'MangaReader',
-    category: 'Content Platform',
-    image: mangatai,
-    overview: 'A comprehensive manga reading and uploading platform equipped with an admin dashboard, user coin transaction system, gift boxes, and chapter management.',
-    keyFeatures: [
-      'Interactive manga reader interface with smooth page navigation',
-      'Coin transaction and virtual currency balance system',
-      'Admin dashboard for chapter uploads and user management',
-      'Daily rewards and interactive gift box system'
-    ],
-    languages: [ 'Laravel', 'Docker', 'MySQL', 'Tailwind CSS', 'Google OAuth']
-  },
-  {
-    title: 'Saleway Tracking',
-    tag: 'Inhouse System for sale distribution',
-    category: 'Enterprise System',
-    image: saleway,
-    overview: 'An internal distribution and sales tracking application designed to monitor inventory movement, field sales updates, and distribution metrics efficiently.',
-    keyFeatures: [
-      'Real-time distribution and sales activity tracking',
-      'Real-time GPS location tracking for field agents',
-      'Stock management and inventory update system',
-      'Automated reporting and analytics dashboard for management',
-      'Role-based permissions for field agents and administrators',
-      'Automated status update logs and reporting features',
-      'Optimized database queries for fast local inventory lookup'
-    ],
-    languages: ['Laravel', 'React', 'MySQL', 'Tailwind CSS', 'Docker','Redis','Cobol']
-  }
 ]
 
 export const experience = [
-  
+
   {
     company: 'GIC Company',
     role: 'Software Development Intern',
@@ -167,25 +181,25 @@ export const achievements = [
   {
     title: 'ITPEC IP Certificate',
     org: 'ITPEC',
-    date:'2024',
+    date: '2024',
     image: ip,
   },
   {
     title: 'ITPEC FE Certificate',
     org: 'ITPEC',
-    date:'2026',
+    date: '2026',
     image: fe,
   },
   {
     title: 'Best OJT Project Award',
     org: 'GIC Academy',
-    date:'2026',
+    date: '2026',
     image: bestOjt,
   },
   {
     title: 'Internship Completion Certificate',
     org: 'GIC Company',
-    date:'2026',
+    date: '2026',
     image: internshipCompletion,
   },
 ]

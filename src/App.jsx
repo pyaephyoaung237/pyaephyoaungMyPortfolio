@@ -18,10 +18,10 @@ export default function App() {
         <Hero />
         <About />
         <Skills />
-        <Education />
         <Work />
         <Experience />
         <Achievement />
+        <Education /> 
         <Contact />
       </main>
       <Footer />

@@ -30,7 +30,7 @@ export default function About() {
         {/* Content */}
         <div className="text-center">
 
-          <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-navy-700 leading-relaxed max-w-2xl mx-auto">
             {profile.bio}
           </p>
 
@@ -42,8 +42,8 @@ export default function About() {
               <Briefcase className="w-5 h-5 shrink-0" style={{ color: '#ff5e3a' }} />
 
               <div className="text-left min-w-0">
-                <span className="font-semibold" style={{ color: '#ff5e3a' }}>
-                
+                <span className="font-semibold text-navy-700">
+                  Specialized:
                 </span>{' '}
                 <span className="text-black">
                   {profile.tagline}
@@ -56,8 +56,8 @@ export default function About() {
               <Mail className="w-5 h-5 shrink-0" style={{ color: '#ff5e3a' }} />
 
               <div className="text-left min-w-0">
-                <span className="font-semibold" style={{ color: '#ff5e3a' }}>
-                
+                <span className="font-semibold text-navy-700">
+                  Email:
                 </span>{' '}
                 <a
                   href={`mailto:${profile.email}`}
@@ -76,8 +76,8 @@ export default function About() {
               <Phone className="w-5 h-5 shrink-0" style={{ color: '#ff5e3a' }} />
 
               <div className="text-left min-w-0">
-                <span className="font-semibold" style={{ color: '#ff5e3a' }}>
-                  
+                <span className="font-semibold text-navy-700">
+                  Phone:
                 </span>{' '}
                 <a
                   href={`tel:${profile.phone}`}
@@ -95,8 +95,8 @@ export default function About() {
               <MapPin className="w-5 h-5 shrink-0" style={{ color: '#ff5e3a' }} />
 
               <div className="text-left min-w-0">
-                <span className="font-semibold" style={{ color: '#ff5e3a' }}>
-                  
+                <span className="font-semibold text-navy-700">
+                  Location:
                 </span>{' '}
                 <span className="text-black">
                   {profile.place}
@@ -109,8 +109,8 @@ export default function About() {
               <Lightbulb className="w-5 h-5 shrink-0" style={{ color: '#ff5e3a' }} />
 
               <div className="text-left min-w-0">
-                <span className="font-semibold" style={{ color: '#ff5e3a' }}>
-                  
+                <span className="font-semibold text-navy-700">
+                  Interest:
                 </span>{' '}
                 <span className="text-black">
                   {profile.interests}

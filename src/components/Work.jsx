@@ -41,7 +41,7 @@ function WorkCard({ item, index, onViewProject }) {
             onClick={() => onViewProject(item)}
             className="px-5 py-2.5 bg-white text-navy-600 font-semibold rounded-lg shadow-md hover:bg-navy-600 hover:text-white transition-colors duration-300 flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0"
           >
-            <span>View Project</span>
+            <span>Project Details</span>
             <FaExternalLinkAlt className="text-xs" />
           </button>
         </div>

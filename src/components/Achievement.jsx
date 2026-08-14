@@ -72,7 +72,7 @@ export default function Achievement() {
               ></span>
             </h2>
           </div>
-          <p className="text-gray-600 text-sm mt-2">No achievement comes without challenges.</p>
+          <p className="text-navy-600  mt-2">No achievement comes without challenges.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
