@@ -286,13 +286,13 @@ export default function Contact() {
 
           {/* Terminal Body Container */}
           <div className="p-3 sm:p-5 flex-1 overflow-y-auto leading-relaxed text-gray-200">
-            <pre className="text-emerald-400 mb-2 font-mono text-[8px] sm:text-[10px] leading-tight select-none overflow-x-auto">
-              {`██████╗ ██╗   ██╗ █████╗ ███████╗    ██████╗ ██╗   ██╗ ██████╗     █████╗ ██╗   ██╗███╗   ██╗ ██████╗ 
-██╔══██╗╚██╗ ██╔╝██╔══██╗██╔════╝    ██╔══██╗██║   ██║██╔═══██╗   ██╔══██╗██║   ██║████╗  ██║██╔════╝ 
-██████╔╝ ╚████╔╝ ███████║█████╗      ██████╔╝███████║██║   ██║   ███████║██║   ██║██╔██╗ ██║██║  ███╗
-██╔═══╝   ╚██╔╝  ██╔══██║██╔══╝      ██╔═══╝ ██╔══██║██║   ██║   ██╔══██║██║   ██║██║╚██╗██║██║   ██║
-██║        ██║   ██║  ██║███████╗    ██║     ██║  ██║╚██████╔╝   ██║  ██║╚██████╔╝██║ ╚████║╚██████╔╝
-╚═╝        ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝  ╚═╝ ╚═════╝    ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═╝     `}
+<pre className="text-emerald-400 mb-2 font-mono text-[8px] sm:text-[10px] leading-tight select-none overflow-x-auto">
+              {`██████╗ ██╗   ██╗ █████╗ ███████╗
+██╔══██╗╚██╗ ██╔╝██╔══██╗██╔════╝
+██████╔╝ ╚████╔╝ ███████║█████╗  
+██╔═══╝   ╚██╔╝  ██╔══██║██╔══╝  
+██║        ██║   ██║  ██║███████╗
+╚═╝        ╚═╝   ╚═╝  ╚═╝╚══════╝`}
             </pre>
 
             <p className="text-emerald-400 mb-3 text-[11px] sm:text-xs leading-normal">
