@@ -54,9 +54,9 @@ export default function Navbar() {
         <a 
           href="#home" 
           onClick={(e) => handleLinkClick(e, '#home')}
-          className="flex items-center gap-2 font-display font-bold text-lg md:text-xl text-navy-600"
+          className="flex items-center gap-2 font-display  text-lg md:text-xl text-navy-600"
         >
-          <span className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-navy-600 text-white text-sm">
+          <span className="inline-flex items-center justify-center w-9 h-9 rounded-md  text-navy-600 ">
             {'</>'}
           </span>
           PyaePhyoAung
