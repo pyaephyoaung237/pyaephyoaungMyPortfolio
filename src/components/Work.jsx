@@ -171,7 +171,7 @@ export default function Work() {
       <div className="max-w-7xl mx-auto">
 
         {/* Section Heading with FolderGit2 icon */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-5">
           <h2
             ref={headingRef}
             className={`reveal ${

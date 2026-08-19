@@ -14,7 +14,7 @@ export default function About() {
       <div className="max-w-4xl mx-auto">
 
       {/* Title with Info icon in front */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-2">
           <h2 className="relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl text-black">
             <span className="inline-flex items-center justify-center gap-2.5">
               <User className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} />

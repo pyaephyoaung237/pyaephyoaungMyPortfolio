@@ -50,7 +50,7 @@ export default function Navbar() {
         scrolled ? 'shadow-md' : 'shadow-none'
       }`}
     >
-      <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-10 h-16 md:h-20">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-10 h-16 md:h-16">
         <a 
           href="#home" 
           onClick={(e) => handleLinkClick(e, '#home')}

@@ -9,7 +9,7 @@ function EducationCard({ item, index }) {
   return (
     <div
       ref={ref}
-      className={`${fromSide} ${isVisible ? 'is-visible' : ''} grid sm:grid-cols-[200px_1fr] gap-6 bg-white border border-gray-200 rounded-xl p-6 shadow-sm`}
+      className={`${fromSide} ${isVisible ? 'is-visible' : ''} grid sm:grid-cols-[200px_1fr] gap-6 bg-gray-50 border border-gray-200 rounded-xl p-6 shadow-sm`}
     >
       <div className="w-full h-40 sm:h-full rounded-lg bg-navy-50 flex items-center justify-center overflow-hidden">
         <img
@@ -45,11 +45,11 @@ export default function Education() {
   const [headingRef, headingVisible] = useScrollAnimation({ threshold: 0.4 })
 
   return (
-    <section id="education" className="bg-gray-50 py-10 px-5 md:px-10">
+    <section id="education" className="bg-white py-10 px-5 md:px-10">
       <div className="max-w-5xl mx-auto">
         <div ref={headingRef} className={`reveal ${headingVisible ? 'is-visible' : ''} text-center mb-4`}>
           {/* Title with GraduationCap icon in front */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-1">
             <h2 className="relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl text-black">
               <span className="inline-flex items-center justify-center gap-2.5">
                 <GraduationCap className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} />

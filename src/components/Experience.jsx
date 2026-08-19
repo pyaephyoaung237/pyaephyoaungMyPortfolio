@@ -65,7 +65,7 @@ export default function Experience() {
     <section id="experience" ref={containerRef} className="bg-white py-10 px-5 md:px-10">
       <div className="max-w-4xl mx-auto">
         {/* Title with Building2 icon in front */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-5">
           <h2
             ref={headingRef}
             className={`reveal ${headingVisible ? 'is-visible' : ''} relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl text-black`}

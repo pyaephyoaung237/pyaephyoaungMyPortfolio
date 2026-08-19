@@ -309,7 +309,7 @@ export default function Contact() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </button>
-          <span className=" text-navy-600 mt-3 ">Click to contact me</span>
+         
         </div>
 
         {/* Ubuntu Terminal Modal Popup */}

@@ -92,11 +92,11 @@ export default function Skills() {
            </h2>
          </div>
 
-        <p className="text-center text-gray-900 mb-12 md:text-base">
+        <p className="text-center text-gray-900 mb-1 md:text-base">
           The tools and technologies I work with on a daily basis
         </p>
 
-        <div className="space-y-12">
+        <div className="space-y-1">
           {Object.entries(groupedSkills).map(([categoryName, categorySkills]) => (
             <div key={categoryName} className=" rounded-2xl p-6 md:p-8 bg-white shadow-sm">
               <h3 className="text-xl font-bold text-navy-600 mb-6 pb-2 border-b-2 border-navy-600 inline-block">
