@@ -30,7 +30,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/in/pyae-phyo-aung-1a3923346?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -44,7 +44,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="mailto:your-email@example.com"
+              href="mailto:pyaephyoaung2377@gmail.com"
               aria-label="Email"
               style={{ backgroundColor: '#ff5e3a' }}
               className="w-10 h-10 flex items-center justify-center
