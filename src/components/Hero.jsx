@@ -1,47 +1,48 @@
 import { profile } from '../data'
 import Typewriter from './Typewriter'
 
-export default function Hero() {
+export default function Hero({ darkMode, lang }) {
   return (
     <section
       id="home"
-      className="relative bg-white pt-32  md:pt-40 md:pb-28 px-5 md:px-10 overflow-hidden"
+      className={`relative pt-32 md:pt-40 md:pb-28 px-5 md:px-10 overflow-hidden transition-colors ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'
+        }`}
     >
-      {/* Animated zodiac/constellation-style background accent */}
-      <svg
-        className="absolute inset-0 w-full h-full opacity-[0.08] pointer-events-none"
-        viewBox="0 0 800 600"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <g className="animate-[spin_180s_linear_infinite]" style={{ transformOrigin: '400px 300px' }}>
-          {Array.from({ length: 18 }).map((_, i) => (
-            <circle
-              key={i}
-              cx={(i * 137) % 800}
-              cy={(i * 91) % 600}
-              r={i % 2 === 0 ? "3.5" : "2"}
-              fill="#1f2f5c"
-            />
-          ))}
-          {Array.from({ length: 14 }).map((_, i) => (
-            <line
-              key={`l-${i}`}
-              x1={(i * 137) % 800}
-              y1={(i * 91) % 600}
-              x2={((i + 3) * 97) % 800}
-              y2={((i + 3) * 133) % 600}
-              stroke="#1f2f5c"
-              strokeWidth="1"
-              strokeDasharray={i % 3 === 0 ? "4 2" : "none"}
-            />
-          ))}
-        </g>
-      </svg>
+      {/* Inline styles for twinkling star shine animations */}
+      <style>{`
+        @keyframes starTwinkle1 {
+          0%, 100% { opacity: 0.15; transform: scale(0.8); }
+          50% { opacity: 1; transform: scale(1.4); }
+        }
+        @keyframes starTwinkle2 {
+          0%, 100% { opacity: 1; transform: scale(1.3); }
+          50% { opacity: 0.2; transform: scale(0.7); }
+        }
+        @keyframes starTwinkle3 {
+          0%, 50%, 100% { opacity: 0.3; transform: scale(1); }
+          25%, 75% { opacity: 1.2; transform: scale(1.5); }
+        }
+        .twinkle-star-1 {
+          animation: starTwinkle1 2.8s ease-in-out infinite;
+          transform-origin: center;
+        }
+        .twinkle-star-2 {
+          animation: starTwinkle2 3.5s ease-in-out infinite;
+          transform-origin: center;
+        }
+        .twinkle-star-3 {
+          animation: starTwinkle3 2.2s ease-in-out infinite;
+          transform-origin: center;
+        }
+      `}</style>
+
+      {/* Animated Zodiac & Celestial Star Map Background */}
 
       <div className="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         {/* Left Side: Image / Profile Initial Circle */}
         <div className="flex justify-center md:justify-start">
-          <div className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-navy-50 border-4 border-navy-600 overflow-hidden flex items-center justify-center">
+          <div className={`w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-4 overflow-hidden flex items-center justify-center ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-navy-50 border-navy-600'
+            }`}>
             <img
               src={profile.profileImage}
               alt="Profile"
@@ -52,15 +53,28 @@ export default function Hero() {
 
         {/* Right Side: Text and Actions */}
         <div>
-          <p className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-black leading-tight">
-            Hello,
+          <p className={`font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-tight ${darkMode ? 'text-white' : 'text-black'
+            }`}>
+            {lang === 'jp'
+              ? (() => {
+                const hour = new Date().getHours()
+                if (hour >= 5 && hour < 12) return 'おはようございます、' // Morning (5 AM - 12 PM)
+                if (hour >= 12 && hour < 18) return 'こんにちは、'     // Afternoon (12 PM - 6 PM)
+                return 'こんばんは、'                             // Evening/Night (6 PM - 5 AM)
+              })()
+              : 'Hello,'}
           </p>
-          <p className="font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-tight mt-1">
-            I'm <span className="text-amber-500">{profile.name}</span>
+          <p className={`font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-tight mt-1 ${darkMode ? 'text-white' : 'text-black'
+            }`}>
+            {lang === 'jp' ? (
+              <><span className="text-amber-500">ピィエピョーアウン</span> です</>
+            ) : (
+              <>I'm <span className="text-amber-500">{profile.name}</span></>
+            )}
           </p>
-          <p className="mt-5 md:text-lg text-gray-800">
-            Have Experience In{' '}
-            <span className=" font-bold text-navy-700">
+          <p className={`mt-5 md:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>
+            {lang === 'jp' ? '以下の経験があります: ' : 'Have Experience In '}
+            <span className={`font-bold ${darkMode ? 'text-white' : 'text-navy-700'}`}>
               <Typewriter roles={profile.rolesList} />
             </span>
           </p>
@@ -69,13 +83,12 @@ export default function Hero() {
             href="#about"
             className="inline-flex items-center gap-2 mt-8 bg-navy-600 hover:bg-navy-700 text-white font-medium px-6 py-3 rounded-full transition-colors"
           >
-            About Me
+            {lang === 'jp' ? '私について' : 'About Me'}
             <span aria-hidden>↓</span>
           </a>
 
           <div className="flex gap-3 mt-8">
             {profile.socials.map((s) => {
-              // Direct inline SVGs based on label to prevent any data.js parsing errors
               let iconSvg = null
               if (s.label === 'LinkedIn') {
                 iconSvg = (

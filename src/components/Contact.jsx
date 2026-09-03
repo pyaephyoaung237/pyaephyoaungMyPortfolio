@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-export default function Contact() {
+export default function Contact({ darkMode, lang }) {
   const [showTerminal, setShowTerminal] = useState(false)
 
   const [inputVal, setInputVal] = useState('')
@@ -220,21 +220,21 @@ export default function Contact() {
     let newErrors = {}
 
     if (!formData.name.trim()) {
-      newErrors.name = 'The name field is required.'
+      newErrors.name = lang === 'jp' ? '名前を入力してください。' : 'The name field is required.'
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'The email field is required.'
+      newErrors.email = lang === 'jp' ? 'メールアドレスを入力してください。' : 'The email field is required.'
     } else if (!formData.email.includes('@') || !formData.email.includes('.')) {
-      newErrors.email = 'The email must be a valid email address.'
+      newErrors.email = lang === 'jp' ? '有効なメールアドレスを入力してください。' : 'The email must be a valid email address.'
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'The message field is required.'
+      newErrors.message = lang === 'jp' ? 'メッセージを入力してください。' : 'The message field is required.'
     } else {
       const wordCount = formData.message.trim().split(/\s+/).length
       if (wordCount > 1000) {
-        newErrors.message = `The message may not be greater than 1000 words. (Current: ${wordCount} words)`
+        newErrors.message = lang === 'jp' ? `メッセージは1000語を超えることはできません。(現在: ${wordCount} 語)` : `The message may not be greater than 1000 words. (Current: ${wordCount} words)`
       }
     }
 
@@ -265,36 +265,47 @@ export default function Contact() {
         setSuccessMessage(true)
         setFormData({ name: '', email: '', message: '' })
       } else {
-        setErrors({ message: 'Server error occurred while sending message. Please try again later.' })
+        setErrors({ message: lang === 'jp' ? 'メッセージの送信中にサーバーエラーが発生しました。後で再度お試しください。' : 'Server error occurred while sending message. Please try again later.' })
       }
     } catch (error) {
-      setErrors({ message: 'Network error. Please check your connection and try again.' })
+      setErrors({ message: lang === 'jp' ? 'ネットワークエラーが発生しました。接続を確認して再度お試しください。' : 'Network error. Please check your connection and try again.' })
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
-    <section id="contact" className="py-12 md:py-16 bg-white px-3 sm:px-6 md:px-10 text-gray-900 overflow-hidden">
+    <section 
+      id="contact" 
+      className={`py-12 md:py-16 px-3 sm:px-6 md:px-10 overflow-hidden transition-colors ${
+        darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+      }`}
+    >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-3 md:mb-3">
-          <h2 className="relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl text-black">
+          <h2 className={`relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl ${
+            darkMode ? 'text-white' : 'text-black'
+          }`}>
             <span className="inline-flex items-center justify-center gap-2.5">
               <svg className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
               </svg>
-              <span className="text-navy-600">Contact</span>
+              <span className={darkMode ? 'text-white' : 'text-navy-600'}>
+                {lang === 'jp' ? 'お問い合わせ' : 'Contact'}
+              </span>
             </span>
             <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-1 rounded-full" style={{ backgroundColor: '#ff5e3a' }}></span>
           </h2>
-          <p className="text-navy-600  mt-1">I'm waiting for new opportunities</p>
+          <p className={`mt-1 ${darkMode ? 'text-gray-300' : 'text-navy-600'}`}>
+            {lang === 'jp' ? '新しい機会をお待ちしております' : "I'm waiting for new opportunities"}
+          </p>
         </div>
 
         {/* Reveal button styled like Ubuntu Terminal launcher */}
         <div className="flex flex-col items-center justify-center py-3 md:py-3">
           <button
             onClick={() => setShowTerminal(true)}
-            className="group relative inline-flex items-center gap-3 bg-[#300a24]  text-white font-mono text-xs sm:text-sm px-6 py-3.5 rounded-xl border border-purple-900/60 shadow-xl transition-all duration-200 active:scale-95"
+            className="group relative inline-flex items-center gap-3 bg-[#300a24] text-white font-mono text-xs sm:text-sm px-6 py-3.5 rounded-xl border border-purple-900/60 shadow-xl transition-all duration-200 active:scale-95"
           >
             {/* Ubuntu orange dot accent */}
             <span className="w-3 h-3 rounded-full bg-orange-500 shadow-sm animate-pulse shrink-0"></span>
@@ -302,19 +313,20 @@ export default function Contact() {
             {/* Terminal prompt visual text */}
             <div className="flex items-center gap-1.5 text-left">
               <span className="text-emerald-400">pyae@ubuntu:~$</span>
-              <span className="text-gray-200 group-hover:text-white">open contact form</span>
+              <span className="text-gray-200 group-hover:text-white">
+                {lang === 'jp' ? 'お問い合わせフォームを開く' : 'open contact form'}
+              </span>
             </div>
 
             <svg className="w-4 h-4 ml-1 text-gray-400 group-hover:text-white transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </button>
-         
         </div>
 
         {/* Ubuntu Terminal Modal Popup */}
         {showTerminal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/20 animate-fadeIn">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/50 animate-fadeIn">
             <div className="bg-[#2c001e] rounded-lg shadow-2xl overflow-hidden border border-gray-700 font-mono text-white text-xs sm:text-sm flex flex-col w-full max-w-3xl h-[85vh] sm:h-[580px]">
 
               {/* Terminal Header */}
@@ -378,8 +390,8 @@ export default function Contact() {
                             </div>
                             <p className="text-gray-300 text-[11px] mb-1.5">{proj.overview}</p>
                             <div className="flex flex-wrap gap-1">
-                              {proj.languages.map((lang, lIdx) => (
-                                <span key={lIdx} className="bg-gray-800 text-yellow-300 px-1.5 py-0.5 rounded text-[9px] font-mono">{lang}</span>
+                              {proj.languages.map((langItem, lIdx) => (
+                                <span key={lIdx} className="bg-gray-800 text-yellow-300 px-1.5 py-0.5 rounded text-[9px] font-mono">{langItem}</span>
                               ))}
                             </div>
                           </div>
@@ -460,9 +472,13 @@ export default function Contact() {
                       <svg className="w-5 h-5 text-orange-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                       </svg>
-                      <h3 className="text-sm sm:text-base font-bold text-orange-400">Package Successfully Installed!</h3>
+                      <h3 className="text-sm sm:text-base font-bold text-orange-400">
+                        {lang === 'jp' ? 'パッケージのインストールに成功しました！' : 'Package Successfully Installed!'}
+                      </h3>
                     </div>
-                    <p className="text-gray-300 text-[11px] sm:text-xs mb-2">Direct Communication Link Established:</p>
+                    <p className="text-gray-300 text-[11px] sm:text-xs mb-2">
+                      {lang === 'jp' ? 'ダイレクト通信リンクが確立されました：' : 'Direct Communication Link Established:'}
+                    </p>
 
                     <div className="flex items-center gap-2 mb-3 bg-black/50 p-2 rounded border border-gray-700">
                       <span className="text-gray-400 text-[10px] sm:text-xs">Email:</span>
@@ -473,13 +489,15 @@ export default function Contact() {
 
                     {successMessage ? (
                       <div className="p-3 bg-emerald-950/80 border border-emerald-500 rounded text-emerald-300 text-xs text-center space-y-1.5">
-                        <p className="font-bold">✓ Message Sent Successfully!</p>
-                        <p className="text-gray-300 text-[11px]">Your message has been delivered to pyaephyoaung2377@gmail.com.</p>
+                        <p className="font-bold">✓ {lang === 'jp' ? 'メッセージが正常に送信されました！' : 'Message Sent Successfully!'}</p>
+                        <p className="text-gray-300 text-[11px]">
+                          {lang === 'jp' ? 'メッセージが pyaephyoaung2377@gmail.com に配信されました。' : 'Your message has been delivered to pyaephyoaung2377@gmail.com.'}
+                        </p>
                         <button
                           onClick={() => setSuccessMessage(false)}
                           className="mt-1 bg-emerald-700 hover:bg-emerald-600 text-white px-3 py-1 rounded text-[10px] transition-colors"
                         >
-                          Send Another Message
+                          {lang === 'jp' ? '別のメッセージを送信' : 'Send Another Message'}
                         </button>
                       </div>
                     ) : (
@@ -490,13 +508,15 @@ export default function Contact() {
                       >
                         {/* Name Field */}
                         <div>
-                          <label className="block text-[10px] sm:text-[11px] text-gray-400 mb-0.5">Your Name:</label>
+                          <label className="block text-[10px] sm:text-[11px] text-gray-400 mb-0.5">
+                            {lang === 'jp' ? 'お名前:' : 'Your Name:'}
+                          </label>
                           <input
                             type="text"
                             name="name"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            placeholder="e.g. John Doe"
+                            placeholder={lang === 'jp' ? '例: 山田 太郎' : 'e.g. John Doe'}
                             className={`w-full bg-black/60 rounded px-2.5 py-1.5 text-white focus:outline-none text-xs ${errors.name ? 'border border-red-500 focus:border-red-500' : 'border border-gray-700 focus:border-orange-500'}`}
                           />
                           {errors.name && (
@@ -506,13 +526,15 @@ export default function Contact() {
 
                         {/* Email Field */}
                         <div>
-                          <label className="block text-[10px] sm:text-[11px] text-gray-400 mb-0.5">Your Email:</label>
+                          <label className="block text-[10px] sm:text-[11px] text-gray-400 mb-0.5">
+                            {lang === 'jp' ? 'メールアドレス:' : 'Your Email:'}
+                          </label>
                           <input
                             type="text"
                             name="email"
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            placeholder="e.g. john@example.com"
+                            placeholder={lang === 'jp' ? '例: john@example.com' : 'e.g. john@example.com'}
                             className={`w-full bg-black/60 rounded px-2.5 py-1.5 text-white focus:outline-none text-xs ${errors.email ? 'border border-red-500 focus:border-red-500' : 'border border-gray-700 focus:border-orange-500'}`}
                           />
                           {errors.email && (
@@ -522,18 +544,20 @@ export default function Contact() {
 
                         {/* Message Field */}
                         <div>
-                          <label className="block text-[10px] sm:text-[11px] text-gray-400 mb-0.5">Message (Max 1000 words):</label>
+                          <label className="block text-[10px] sm:text-[11px] text-gray-400 mb-0.5">
+                            {lang === 'jp' ? 'メッセージ (最大1000語):' : 'Message (Max 1000 words):'}
+                          </label>
                           <textarea
                             name="message"
                             rows="2"
                             value={formData.message}
                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                            placeholder="Type your message here..."
+                            placeholder={lang === 'jp' ? 'ここにメッセージを入力してください...' : 'Type your message here...'}
                             className={`w-full bg-black/60 rounded px-2.5 py-1.5 text-white focus:outline-none text-xs resize-none ${errors.message ? 'border border-red-500 focus:border-red-500' : 'border border-gray-700 focus:border-orange-500'}`}
                           ></textarea>
                           <div className="flex justify-between items-center mt-0.5">
                             <span className="text-[9px] text-gray-400">
-                              {formData.message.trim() ? formData.message.trim().split(/\s+/).length : 0} / 1000 words
+                              {formData.message.trim() ? formData.message.trim().split(/\s+/).length : 0} {lang === 'jp' ? '/ 1000 語' : '/ 1000 words'}
                             </span>
                           </div>
                           {errors.message && (
@@ -546,7 +570,9 @@ export default function Contact() {
                           disabled={isSubmitting}
                           className="w-full bg-orange-600 hover:bg-orange-700 text-white font-medium py-1.5 px-3 rounded transition-colors text-xs disabled:opacity-50"
                         >
-                          {isSubmitting ? 'Sending...' : 'Send Message'}
+                          {isSubmitting 
+                            ? (lang === 'jp' ? '送信中...' : 'Sending...') 
+                            : (lang === 'jp' ? 'メッセージを送信' : 'Send Message')}
                         </button>
                       </form>
                     )}
@@ -561,7 +587,7 @@ export default function Contact() {
                     value={inputVal}
                     onChange={(e) => setInputVal(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder="type command..."
+                    placeholder={lang === 'jp' ? 'type command...' : 'type command...'}
                     disabled={isInstalling}
                     className="flex-1 bg-transparent border-none outline-none text-white font-mono text-xs sm:text-sm focus:ring-0 placeholder:text-gray-600 min-w-0"
                   />

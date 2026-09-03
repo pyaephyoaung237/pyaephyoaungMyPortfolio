@@ -1,19 +1,20 @@
 import { useState } from 'react'
 import { achievements } from '../data'
-import useScrollAnimation from '../hooks/useScrollAnimation'
 import { Eye, X } from 'lucide-react'
 import { Award } from 'lucide-react'
 
-function AchievementCard({ item, index, onViewImage }) {
-  const [ref, isVisible] = useScrollAnimation({ threshold: 0.2 })
-
+function AchievementCard({ item, index, onViewImage, darkMode, lang }) {
   return (
     <div
-      ref={ref}
-      className={`reveal-scale ${isVisible ? 'is-visible' : ''} bg-white border border-gray-200 rounded-xl overflow-hidden group shadow-sm hover:shadow-md transition-shadow`}
-      style={{ transitionDelay: `${(index % 6) * 70}ms` }}
+      className={`border rounded-xl overflow-hidden group shadow-sm transition-all duration-300 flex flex-col ${
+        darkMode 
+          ? 'bg-gray-800/80 border-gray-700' 
+          : 'bg-white border-gray-200 hover:shadow-md'
+      }`}
     >
-      <div className="h-56 flex items-center justify-center bg-gray-50 overflow-hidden relative">
+      <div className={`h-56 flex items-center justify-center overflow-hidden relative ${
+        darkMode ? 'bg-gray-900/50' : 'bg-gray-50'
+      }`}>
         {item.image ? (
           <>
             <img
@@ -33,15 +34,23 @@ function AchievementCard({ item, index, onViewImage }) {
             </button>
           </>
         ) : (
-          <span className="text-navy-600 font-display font-bold text-3xl">🏆</span>
+          <span className="text-3xl">🏆</span>
         )}
       </div>
-      <div className="px-4 py-4 bg-white">
-        <p className="text-navy-600 font-semibold text-sm">{item.title}</p>
-        <div className="flex items-center justify-between mt-1">
-          <p className="text-gray-600 text-xs">{item.org}</p>
+      <div className={`px-4 py-4 flex-1 flex flex-col justify-between ${darkMode ? 'bg-gray-800/80' : 'bg-white'}`}>
+        <div>
+          <p className={`font-semibold text-sm ${darkMode ? 'text-gray-100' : 'text-navy-600'}`}>
+            {lang === 'jp' && item.titleJp ? item.titleJp : item.title}
+          </p>
+        </div>
+        <div className="flex items-center justify-between mt-3">
+          <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            {lang === 'jp' && item.orgJp ? item.orgJp : item.org}
+          </p>
           {item.date && (
-            <span className="text-[11px] text-gray-700 px-2 py-0.5 rounded bg-gray-100 font-medium">
+            <span className={`text-[11px] px-2 py-0.5 rounded font-medium ${
+              darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'
+            }`}>
               {item.date}
             </span>
           )}
@@ -51,20 +60,28 @@ function AchievementCard({ item, index, onViewImage }) {
   )
 }
 
-export default function Achievement() {
-  const [headingRef, headingVisible] = useScrollAnimation({ threshold: 0.4 })
+export default function Achievement({ darkMode, lang }) {
   const [modalImage, setModalImage] = useState(null)
 
   return (
-    <section id="achievement" className="py-10 px-5 md:px-10 relative ">
+    <section 
+      id="achievement" 
+      className={`py-10 px-5 md:px-10 relative transition-colors ${
+        darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'
+      }`}
+    >
       <div className="max-w-7xl mx-auto">
-        <div ref={headingRef} className={`reveal ${headingVisible ? 'is-visible' : ''} text-center mb-4`}>
+        <div className="text-center mb-4">
           {/* Title with Award icon in front */}
           <div className="text-center mb-2">
-            <h2 className="relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl text-black">
+            <h2 className={`relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl ${
+              darkMode ? 'text-white' : 'text-black'
+            }`}>
               <span className="inline-flex items-center justify-center gap-2.5">
                 <Award className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} />
-                <span className="text-navy-600">Achievement</span>
+                <span className={darkMode ? 'text-white' : 'text-navy-600'}>
+                  {lang === 'jp' ? '実績' : 'Achievement'}
+                </span>
               </span>
               <span
                 className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 rounded-full"
@@ -72,7 +89,9 @@ export default function Achievement() {
               ></span>
             </h2>
           </div>
-          <p className="text-navy-600  mt-2">No achievement comes without challenges.</p>
+          <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-navy-600'}`}>
+            {lang === 'jp' ? '挑戦なくして成功なし。' : 'No achievement comes without challenges.'}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
@@ -82,18 +101,24 @@ export default function Achievement() {
               item={item} 
               index={i} 
               onViewImage={(img) => setModalImage(img)} 
+              darkMode={darkMode}
+              lang={lang}
             />
           ))}
         </div>
       </div>
 
-      {/* Full Image Modal with Clean White Background */}
+      {/* Full Image Modal with Dark/Light Support */}
       {modalImage && (
-        <div className="fixed inset-0 z-50 bg-white/20 flex items-center justify-center p-4">
-          <div className="relative max-w-4xl w-full bg-white rounded-2xl overflow-hidden p-4 border border-gray-200 shadow-2xl">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className={`relative max-w-4xl w-full rounded-2xl overflow-hidden p-4 shadow-2xl transition-colors ${
+            darkMode ? 'bg-gray-800 border border-gray-700 text-white' : 'bg-white border border-gray-200 text-black'
+          }`}>
             <button
               onClick={() => setModalImage(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center hover:bg-gray-200 transition-colors shadow-sm"
+              className={`absolute top-4 right-4 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-colors shadow-sm ${
+                darkMode ? 'bg-gray-700 text-gray-200 hover:bg-gray-600' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
             >
               <X className="w-6 h-6" />
             </button>

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -10,21 +11,28 @@ import Footer from './components/Footer'
 import Contact from './components/Contact'
 
 export default function App() {
+  const [darkMode, setDarkMode] = useState(false)
+  const [lang, setLang] = useState('en')
+
   return (
-    
-    <div className="min-h-screen bg-white">
-      <Navbar />
+    <div className={`min-h-screen transition-colors ${darkMode ? 'bg-gray-900 text-white dark' : 'bg-white text-black'}`}>
+      <Navbar 
+        darkMode={darkMode} 
+        setDarkMode={setDarkMode} 
+        lang={lang} 
+        setLang={setLang} 
+      />
       <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Work />
-        <Experience />
-        <Achievement />
-        <Education /> 
-        <Contact />
+        <Hero darkMode={darkMode} lang={lang} />
+        <About darkMode={darkMode} lang={lang} />
+        <Skills darkMode={darkMode} lang={lang} />
+        <Work darkMode={darkMode} lang={lang} />
+        <Experience darkMode={darkMode} lang={lang} />
+        <Achievement darkMode={darkMode} lang={lang} />
+        <Education darkMode={darkMode} lang={lang} /> 
+        <Contact darkMode={darkMode} lang={lang} />
       </main>
-      <Footer />
+      <Footer darkMode={darkMode} lang={lang} />
     </div>
   )
 }

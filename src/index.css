@@ -16,17 +16,6 @@ h1, h2, h3, h4 {
   font-family: 'Poppins', sans-serif;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-::-webkit-scrollbar-thumb {
-  background: #1f2f5c;
-  border-radius: 8px;
-}
-
 /* Reveal-on-scroll base state — JS toggles .is-visible via IntersectionObserver */
 .reveal {
   opacity: 0;

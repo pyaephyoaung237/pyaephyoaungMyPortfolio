@@ -5,15 +5,17 @@ import {
   FaEnvelope,
 } from 'react-icons/fa'
 
-export default function Footer() {
+export default function Footer({ darkMode, lang }) {
   return (
-    <footer className="bg-white border-t border-gray-100">
+    <footer className={`border-t transition-colors ${
+      darkMode ? 'bg-gray-900 border-gray-800 text-white' : 'bg-white border-gray-100 text-gray-900'
+    }`}>
       <div className="max-w-7xl mx-auto px-5 md:px-10 py-8">
 
         {/* Top Section: Social Icons on Left & Navigation */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-2 ">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-2">
 
-          {/* Social Icons (Moved to Left) */}
+          {/* Social Icons */}
           <div className="flex justify-start gap-3">
             <a
               href="https://github.com/pyaephyoaung237"
@@ -23,8 +25,8 @@ export default function Footer() {
               style={{ backgroundColor: '#ff5e3a' }}
               className="w-10 h-10 flex items-center justify-center
               rounded-full text-white shadow-sm
-              hover:bg-[#e04d2c]
-              transition-colors duration-300"
+              hover:opacity-90
+              transition-opacity duration-300"
             >
               <FaGithub size={17} />
             </a>
@@ -37,8 +39,8 @@ export default function Footer() {
               style={{ backgroundColor: '#ff5e3a' }}
               className="w-10 h-10 flex items-center justify-center
               rounded-full text-white shadow-sm
-              hover:bg-[#e04d2c]
-              transition-colors duration-300"
+              hover:opacity-90
+              transition-opacity duration-300"
             >
               <FaLinkedin size={17} />
             </a>
@@ -49,8 +51,8 @@ export default function Footer() {
               style={{ backgroundColor: '#ff5e3a' }}
               className="w-10 h-10 flex items-center justify-center
               rounded-full text-white shadow-sm
-              hover:bg-[#e04d2c]
-              transition-colors duration-300"
+              hover:opacity-90
+              transition-opacity duration-300"
             >
               <FaEnvelope size={17} />
             </a>
@@ -58,28 +60,33 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="flex flex-wrap justify-center gap-x-7 gap-y-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-navy-600
-                hover:text-navy-700 transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const labelText = lang === 'jp' ? (link.jpLabel || link.label) : link.label;
+
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors duration-200 ${
+                    darkMode ? 'text-gray-300 hover:text-white' : 'text-navy-600 hover:text-navy-700'
+                  }`}
+                >
+                  {labelText}
+                </a>
+              );
+            })}
           </div>
 
         </div>
 
-        {/* Bottom */}
+       {/* Bottom */}
         <div className="pt-6">
           <div className="flex flex-col items-center gap-2">
-            <p className="text-sm text-navy-600">
-              © {new Date().getFullYear()} All rights reserved.
+            <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-navy-600'}`}>
+              © {new Date().getFullYear()} {lang === 'jp' ? '全著作権所有。' : 'All rights reserved.'}
             </p>
-            <p className="text-sm text-navy-600">
-              Designed & Built By PyaePhyoAung
+            <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-navy-600'}`}>
+              {lang === 'jp' ? 'ピィエピョーアウン  によるデザインと構築' : 'Designed & Built By PyaePhyoAung'}
             </p>
           </div>
         </div>

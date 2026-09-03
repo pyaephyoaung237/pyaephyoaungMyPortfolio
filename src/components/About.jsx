@@ -8,17 +8,26 @@ import {
   User
 } from 'lucide-react'
 
-export default function About() {
+export default function About({ darkMode, lang }) {
   return (
-    <section id="about" className="bg-white py-10 px-5 md:px-10">
+    <section 
+      id="about" 
+      className={`py-10 px-5 md:px-10 transition-colors ${
+        darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'
+      }`}
+    >
       <div className="max-w-4xl mx-auto">
 
-      {/* Title with Info icon in front */}
+        {/* Title with Info icon in front */}
         <div className="text-center mb-2">
-          <h2 className="relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl text-black">
+          <h2 className={`relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl ${
+            darkMode ? 'text-white' : 'text-black'
+          }`}>
             <span className="inline-flex items-center justify-center gap-2.5">
               <User className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} />
-              <span className="text-navy-600">About</span>
+              <span className={darkMode ? 'text-white' : 'text-black'}>
+                {lang === 'jp' ? '私について' : 'About'}
+              </span>
             </span>
             <span
               className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-1 rounded-full"
@@ -30,8 +39,10 @@ export default function About() {
         {/* Content */}
         <div className="text-center">
 
-          <p className="text-navy-700 leading-relaxed max-w-2xl mx-auto">
-            {profile.bio}
+          <p className={`leading-relaxed max-w-2xl mx-auto ${
+            darkMode ? 'text-gray-300' : 'text-navy-700'
+          }`}>
+            {lang === 'jp' ? profile.bioJp : profile.bio}
           </p>
 
           {/* Information */}
@@ -42,10 +53,10 @@ export default function About() {
               <Briefcase className="w-5 h-5 shrink-0" style={{ color: '#ff5e3a' }} />
 
               <div className="text-left min-w-0">
-                <span className="font-semibold text-navy-700">
-                  Specialized:
+                <span className={`font-semibold ${darkMode ? 'text-gray-200' : 'text-navy-700'}`}>
+                  {lang === 'jp' ? '専門:' : 'Specialized:'}
                 </span>{' '}
-                <span className="text-black">
+                <span className={darkMode ? 'text-gray-300' : 'text-black'}>
                   {profile.tagline}
                 </span>
               </div>
@@ -56,18 +67,12 @@ export default function About() {
               <Mail className="w-5 h-5 shrink-0" style={{ color: '#ff5e3a' }} />
 
               <div className="text-left min-w-0">
-                <span className="font-semibold text-navy-700">
-                  Email:
+                <span className={`font-semibold ${darkMode ? 'text-gray-200' : 'text-navy-700'}`}>
+                  {lang === 'jp' ? 'メール:' : 'Email:'}
                 </span>{' '}
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="text-black hover:underline break-words"
-                  style={{ '--hover-color': '#ff5e3a' }}
-                  onMouseEnter={(e) => e.target.style.color = '#ff5e3a'}
-                  onMouseLeave={(e) => e.target.style.color = 'black'}
-                >
+                <span className={darkMode ? 'text-gray-300' : 'text-black'}>
                   {profile.email}
-                </a>
+                </span>
               </div>
             </div>
 
@@ -76,17 +81,12 @@ export default function About() {
               <Phone className="w-5 h-5 shrink-0" style={{ color: '#ff5e3a' }} />
 
               <div className="text-left min-w-0">
-                <span className="font-semibold text-navy-700">
-                  Phone:
+                <span className={`font-semibold ${darkMode ? 'text-gray-200' : 'text-navy-700'}`}>
+                  {lang === 'jp' ? '電話番号:' : 'Phone:'}
                 </span>{' '}
-                <a
-                  href={`tel:${profile.phone}`}
-                  className="text-black hover:underline"
-                  onMouseEnter={(e) => e.target.style.color = '#ff5e3a'}
-                  onMouseLeave={(e) => e.target.style.color = 'black'}
-                >
+                <span className={darkMode ? 'text-gray-300' : 'text-black'}>
                   {profile.phone}
-                </a>
+                </span>
               </div>
             </div>
 
@@ -95,11 +95,11 @@ export default function About() {
               <MapPin className="w-5 h-5 shrink-0" style={{ color: '#ff5e3a' }} />
 
               <div className="text-left min-w-0">
-                <span className="font-semibold text-navy-700">
-                  Location:
+                <span className={`font-semibold ${darkMode ? 'text-gray-200' : 'text-navy-700'}`}>
+                  {lang === 'jp' ? '場所:' : 'Location:'}
                 </span>{' '}
-                <span className="text-black">
-                  {profile.place}
+                <span className={darkMode ? 'text-gray-300' : 'text-black'}>
+                  {lang === 'jp' ? profile.placeJp : profile.place}
                 </span>
               </div>
             </div>
@@ -109,11 +109,11 @@ export default function About() {
               <Lightbulb className="w-5 h-5 shrink-0" style={{ color: '#ff5e3a' }} />
 
               <div className="text-left min-w-0">
-                <span className="font-semibold text-navy-700">
-                  Interest:
+                <span className={`font-semibold ${darkMode ? 'text-gray-200' : 'text-navy-700'}`}>
+                  {lang === 'jp' ? '関心:' : 'Interest:'}
                 </span>{' '}
-                <span className="text-black">
-                  {profile.interests}
+                <span className={darkMode ? 'text-gray-300' : 'text-black'}>
+                  {lang === 'jp' ? profile.interestsJp : profile.interests}
                 </span>
               </div>
             </div>
