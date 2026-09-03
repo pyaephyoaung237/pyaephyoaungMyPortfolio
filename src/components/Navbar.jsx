@@ -140,7 +140,7 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
               aria-label="Toggle dark mode"
               className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm ${
                 darkMode
-                  ? 'bg-gray-800 text-white bg-gray-600'
+                  ? 'bg-gray-800 text-white hover:bg-gray-600'
                   : 'bg-gray-100 text-navy-600 bg-gray-200'
               }`}
             >
@@ -171,7 +171,7 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
               aria-label="Toggle dark mode"
               className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm ${
                 darkMode
-                  ? 'bg-gray-800 text-white hover:bg-gray-700'
+                  ? 'bg-gray-800 text-white hover:bg-gray-600'
                   : 'bg-gray-100 text-navy-600 hover:bg-gray-200'
               }`}
             >

@@ -86,12 +86,26 @@ export default function Footer({ darkMode, lang }) {
                   : 'bg-gray-100 text-black hover:bg-gray-200 border border-gray-200'
               }`}
             >
-              <FaEnvelope size={17}/>            </a>
+              <FaEnvelope size={17} />
+            </a>
           </div>
 
         </div>
 
-       
+        {/* Bottom Section: Copyright, Credits & Back to Top */}
+        <div className="pt-8 flex  sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-black/70'}`}>
+              © {new Date().getFullYear()} {lang === 'jp' ? '全著作権所有。' : 'All rights reserved.'}
+            </p>
+            <span className={`hidden sm:inline ${darkMode ? 'text-gray-600' : 'text-gray-300'}`}>•</span>
+            <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-black/70'}`}>
+              {lang === 'jp' ? 'ピィエピョーアウン によるデザインと構築' : 'Designed & Built by Pyae Phyo Aung'}
+            </p>
+          </div>
+
+          
+        </div>
 
       </div>
     </footer>
