@@ -7,28 +7,28 @@ import { SiTailwindcss, SiMysql, SiPostgresql, SiMongodb, SiKubernetes, SiSpring
 import { Code } from 'lucide-react'
 
 const iconMap = {
-  'HTML': { icon: <FaHtml5 />, color: 'text-orange-500', bg: 'bg-orange-50' },
-  'CSS': { icon: <FaCss3Alt />, color: 'text-blue-500', bg: 'bg-blue-50' },
-  'JavaScript': { icon: <FaJs />, color: 'text-yellow-500', bg: 'bg-yellow-50' },
-  'React': { icon: <FaReact />, color: 'text-cyan-400', bg: 'bg-cyan-50' },
-  'Bootstrap': { icon: <FaBootstrap />, color: 'text-purple-600', bg: 'bg-purple-50' },
-  'Tailwind CSS': { icon: <SiTailwindcss />, color: 'text-cyan-500', bg: 'bg-cyan-50' },
-  'Java': { icon: <FaJava />, color: 'text-red-600', bg: 'bg-red-50' },
-  'PHP': { icon: <FaPhp />, color: 'text-indigo-500', bg: 'bg-indigo-50' },
-  'Laravel': { icon: <SiLaravel />, color: 'text-red-600', bg: 'bg-red-50' },
-  'SpringBoot': { icon: <SiSpring />, color: 'text-green-600', bg: 'bg-green-50' },
-  'MySQL': { icon: <SiMysql />, color: 'text-blue-600', bg: 'bg-blue-50' },
-  'PostgreSQL': { icon: <SiPostgresql />, color: 'text-blue-400', bg: 'bg-blue-50' },
-  'MongoDB': { icon: <SiMongodb />, color: 'text-green-500', bg: 'bg-green-50' },
-  'Redis': { icon: <SiRedis />, color: 'text-red-600', bg: 'bg-red-50' },
-  'Docker': { icon: <FaDocker />, color: 'text-blue-500', bg: 'bg-blue-50' },
-  'AWS': { icon: <FaAws />, color: 'text-amber-500', bg: 'bg-amber-50' },
-  'GitHub': { icon: <FaGithub />, color: 'text-gray-800 dark:text-gray-200', bg: 'bg-gray-100 dark:bg-gray-800' },
-  'Kubernetes': { icon: <SiKubernetes />, color: 'text-blue-600', bg: 'bg-blue-50' },
-  'shell script': { icon: '</>', color: 'text-emerald-600', bg: 'bg-emerald-50' },
-  'Linux': { icon: <FaLinux />, color: 'text-yellow-700 dark:text-yellow-400', bg: 'bg-yellow-50 dark:bg-gray-800' },
-  'Windows': { icon: <FaWindows />, color: 'text-sky-500', bg: 'bg-sky-50' },
-  'MacOS': { icon: <FaApple />, color: 'text-gray-800 dark:text-gray-200', bg: 'bg-gray-100 dark:bg-gray-800' },
+  'HTML': { icon: <FaHtml5 />, color: 'text-orange-500' },
+  'CSS': { icon: <FaCss3Alt />, color: 'text-blue-500' },
+  'JavaScript': { icon: <FaJs />, color: 'text-yellow-500' },
+  'React': { icon: <FaReact />, color: 'text-cyan-400' },
+  'Bootstrap': { icon: <FaBootstrap />, color: 'text-purple-600' },
+  'Tailwind CSS': { icon: <SiTailwindcss />, color: 'text-cyan-500' },
+  'Java': { icon: <FaJava />, color: 'text-red-600' },
+  'PHP': { icon: <FaPhp />, color: 'text-indigo-500' },
+  'Laravel': { icon: <SiLaravel />, color: 'text-red-600' },
+  'SpringBoot': { icon: <SiSpring />, color: 'text-green-600' },
+  'MySQL': { icon: <SiMysql />, color: 'text-blue-600' },
+  'PostgreSQL': { icon: <SiPostgresql />, color: 'text-blue-400' },
+  'MongoDB': { icon: <SiMongodb />, color: 'text-green-500' },
+  'Redis': { icon: <SiRedis />, color: 'text-red-600' },
+  'Docker': { icon: <FaDocker />, color: 'text-blue-500' },
+  'AWS': { icon: <FaAws />, color: 'text-amber-500' },
+  'GitHub': { icon: <FaGithub />, color: 'text-gray-800 dark:text-gray-200' },
+  'Kubernetes': { icon: <SiKubernetes />, color: 'text-blue-600' },
+  'shell script': { icon: '</>', color: 'text-emerald-600' },
+  'Linux': { icon: <FaLinux />, color: 'text-yellow-700 dark:text-yellow-400' },
+  'Windows': { icon: <FaWindows />, color: 'text-sky-500' },
+  'MacOS': { icon: <FaApple />, color: 'text-gray-800 dark:text-gray-200' },
 }
 
 const groupLabels = {
@@ -42,17 +42,10 @@ function SkillCard({ skill, darkMode }) {
   const skillData = iconMap[skill.name] || {}
   const IconComponent = skillData.icon
   const iconColor = skillData.color || (darkMode ? 'text-gray-200' : 'text-navy-600')
-  const iconBg = skillData.bg || (darkMode ? 'bg-gray-800' : 'bg-gray-50')
 
   return (
-    <div
-      className={`relative rounded-xl px-2 py-4 md:px-4 md:py-6 flex flex-col items-center gap-2.5 md:gap-3 transition-colors duration-300 ${
-        darkMode 
-          ? 'bg-gray-800/80 shadow-sm' 
-          : 'bg-white shadow-sm'
-      }`}
-    >
-      <span className={`w-10 h-10 md:w-12 md:h-12 rounded-full ${iconBg} flex items-center justify-center text-xl md:text-2xl ${iconColor}`}>
+    <div className="relative px-2 py-4 md:px-4 md:py-6 flex flex-col items-center gap-2.5 md:gap-3">
+      <span className={`text-2xl md:text-3xl flex items-center justify-center ${iconColor}`}>
         {IconComponent || skill.name.slice(0, 2).toUpperCase()}
       </span>
       <span className={`font-medium text-xs md:text-sm text-center transition-colors duration-300 ${
@@ -108,7 +101,7 @@ export default function Skills({ darkMode, lang }) {
           {Object.entries(groupedSkills).map(([categoryName, categorySkills]) => (
             <div 
               key={categoryName} 
-              className={`rounded-2xl p-4 md:p-8 shadow-sm transition-colors ${
+              className={`rounded-2xl p-4 md:p-8 transition-colors ${
                 darkMode ? 'bg-gray-800/50' : 'bg-white border border-gray-100'
               }`}
             >

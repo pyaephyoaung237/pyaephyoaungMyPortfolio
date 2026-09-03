@@ -51,7 +51,7 @@ function EducationCard({ item, darkMode, lang }) {
           ))}
         </ul>
 
-        <p className="mt-4 inline-block text-xs font-semibold uppercase tracking-wide bg-navy-600 text-white px-3 py-1 rounded-full">
+        <p className="mt-4 inline-block text-xs font-semibold uppercase tracking-wide bg-navy-500 text-white px-3 py-1 rounded-full">
           {item.period} · {lang === 'jp' && item.statusJp ? item.statusJp : item.status}
         </p>
       </div>
