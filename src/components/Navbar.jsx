@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { navLinks } from '../data'
 import { Sun, Moon } from 'lucide-react'
-
+import ukflag from '../assets/united-kingdom.png'
+import jpflag from '../assets/japan.png'
 
 export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -110,7 +111,7 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
                   className={`relative font-medium text-sm tracking-wide transition-colors ${
                     active === link.href
                       ? darkMode
-                        ? 'text-'
+                        ? 'text-[#ff5e3a]'
                         : 'text-navy-600'
                       : darkMode
                       ? 'text-gray-300 hover:text-white'
@@ -149,13 +150,17 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
             <button
               onClick={toggleLanguage}
               aria-label="Switch language"
-              className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold transition-colors shadow-sm ${
+              className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm overflow-hidden p-2 ${
                 darkMode
-                  ? 'bg-gray-800 text-gray-200 hover:bg-gray-700'
-                  : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                  ? 'bg-gray-800 hover:bg-gray-700'
+                  : 'bg-gray-100 hover:bg-gray-200'
               }`}
             >
-              <span>{lang === 'en' ? 'EN' : 'JP'}</span>
+              <img
+                src={lang === 'en' ? ukflag : jpflag}
+                alt={lang === 'en' ? 'UK Flag' : 'Japan Flag'}
+                className="w-full h-full object-contain"
+              />
             </button>
           </div>
 
@@ -176,11 +181,15 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
             <button
               onClick={toggleLanguage}
               aria-label="Switch language"
-              className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold transition-colors shadow-sm ${
-                darkMode ? 'bg-gray-800 text-gray-200' : 'bg-gray-100 text-gray-800'
+              className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm overflow-hidden p-2 ${
+                darkMode ? 'bg-gray-800' : 'bg-gray-100'
               }`}
             >
-              <span>{lang === 'en' ? 'EN' : 'JP'}</span>
+              <img
+                src={lang === 'en' ? ukflag : jpflag}
+                alt={lang === 'en' ? 'UK Flag' : 'Japan Flag'}
+                className="w-full h-full object-contain"
+              />
             </button>
 
             <button

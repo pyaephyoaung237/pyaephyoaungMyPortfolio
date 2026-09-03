@@ -5,10 +5,11 @@ export default function Hero({ darkMode, lang }) {
   return (
     <section
       id="home"
-      className={`relative pt-32 md:pt-40 md:pb-28 px-5 md:px-10 overflow-hidden transition-colors ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'
-        }`}
+      className={`relative pt-32 md:pt-40 md:pb-28 px-5 md:px-10 overflow-hidden transition-colors ${
+        darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'
+      }`}
     >
-      {/* Inline styles for twinkling star shine animations */}
+      {/* Inline styles for twinkling star shine animations and constellation background */}
       <style>{`
         @keyframes starTwinkle1 {
           0%, 100% { opacity: 0.15; transform: scale(0.8); }
@@ -22,6 +23,10 @@ export default function Hero({ darkMode, lang }) {
           0%, 50%, 100% { opacity: 0.3; transform: scale(1); }
           25%, 75% { opacity: 1.2; transform: scale(1.5); }
         }
+        @keyframes constellationFloat {
+          0%, 100% { transform: translateY(0px) scale(1); }
+          50% { transform: translateY(-8px) scale(1.02); }
+        }
         .twinkle-star-1 {
           animation: starTwinkle1 2.8s ease-in-out infinite;
           transform-origin: center;
@@ -34,15 +39,109 @@ export default function Hero({ darkMode, lang }) {
           animation: starTwinkle3 2.2s ease-in-out infinite;
           transform-origin: center;
         }
+        .constellation-bg {
+          animation: constellationFloat 8s ease-in-out infinite;
+        }
       `}</style>
 
       {/* Animated Zodiac & Celestial Star Map Background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center opacity-40 dark:opacity-60">
+        <div className="relative w-full max-w-4xl h-full flex items-center justify-center constellation-bg">
+          <svg
+            className="w-full h-full text-blue-400/40"
+            viewBox="0 0 800 600"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Constellation Lines (Web / Network graph pattern) */}
+            <g stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.4">
+              <line x1="400" y1="150" x2="350" y2="100" />
+              <line x1="400" y1="150" x2="450" y2="110" />
+              <line x1="350" y1="100" x2="280" y2="130" />
+              <line x1="450" y1="110" x2="520" y2="140" />
+              <line x1="400" y1="150" x2="380" y2="220" />
+              <line x1="400" y1="150" x2="430" y2="210" />
+              <line x1="380" y1="220" x2="320" y2="250" />
+              <line x1="430" y1="210" x2="490" y2="240" />
+              <line x1="380" y1="220" x2="400" y2="280" />
+              <line x1="320" y1="250" x2="270" y2="220" />
+              <line x1="490" y1="240" x2="530" y2="200" />
+              <line x1="400" y1="280" x2="360" y2="340" />
+              <line x1="400" y1="280" x2="440" y2="330" />
+              <line x1="360" y1="340" x2="300" y2="350" />
+              <line x1="440" y1="330" x2="500" y2="320" />
+              
+              {/* Additional outer web connections */}
+              <line x1="280" y1="130" x2="250" y2="80" />
+              <line x1="520" y1="140" x2="570" y2="90" />
+              <line x1="270" y1="220" x2="210" y2="180" />
+              <line x1="530" y1="200" x2="590" y2="170" />
+              <line x1="300" y1="350" x2="240" y2="400" />
+              <line x1="500" y1="320" x2="560" y2="380" />
+              <line x1="360" y1="340" x2="380" y2="420" />
+              <line x1="440" y1="330" x2="420" y2="410" />
+            </g>
+
+            {/* Constellation Nodes / Stars */}
+            <g fill="#93c5fd">
+              <circle cx="400" cy="150" r="3" className="twinkle-star-1" />
+              <circle cx="350" cy="100" r="2" className="twinkle-star-2" />
+              <circle cx="450" cy="110" r="2.5" className="twinkle-star-3" />
+              <circle cx="280" cy="130" r="1.5" className="twinkle-star-1" />
+              <circle cx="520" cy="140" r="2" className="twinkle-star-2" />
+              <circle cx="380" cy="220" r="2.5" className="twinkle-star-3" />
+              <circle cx="430" cy="210" r="2" className="twinkle-star-1" />
+              <circle cx="320" cy="250" r="1.5" className="twinkle-star-2" />
+              <circle cx="490" cy="240" r="2" className="twinkle-star-3" />
+              <circle cx="400" cy="280" r="3" className="twinkle-star-1" />
+              <circle cx="270" cy="220" r="1.5" className="twinkle-star-2" />
+              <circle cx="530" cy="200" r="2" className="twinkle-star-3" />
+              <circle cx="360" cy="340" r="2.5" className="twinkle-star-1" />
+              <circle cx="440" cy="330" r="2" className="twinkle-star-2" />
+              <circle cx="300" cy="350" r="1.5" className="twinkle-star-3" />
+              <circle cx="500" cy="320" r="2" className="twinkle-star-1" />
+              <circle cx="250" cy="80" r="1" className="twinkle-star-2" />
+              <circle cx="570" cy="90" r="1.5" className="twinkle-star-3" />
+              <circle cx="210" cy="180" r="1" className="twinkle-star-1" />
+              <circle cx="590" cy="170" r="1.5" className="twinkle-star-2" />
+              <circle cx="240" cy="400" r="1.5" className="twinkle-star-3" />
+              <circle cx="560" cy="380" r="1" className="twinkle-star-1" />
+              <circle cx="380" cy="420" r="1.5" className="twinkle-star-2" />
+              <circle cx="420" cy="410" r="2" className="twinkle-star-3" />
+            </g>
+
+            {/* Scattered background twinkling star dots */}
+            <g fill="#ffffff">
+              <circle cx="150" cy="80" r="1" className="twinkle-star-2" />
+              <circle cx="680" cy="120" r="1.2" className="twinkle-star-1" />
+              <circle cx="120" cy="300" r="0.8" className="twinkle-star-3" />
+              <circle cx="700" cy="280" r="1" className="twinkle-star-2" />
+              <circle cx="200" cy="500" r="1.5" className="twinkle-star-1" />
+              <circle cx="620" cy="480" r="1" className="twinkle-star-3" />
+              <circle cx="450" cy="520" r="0.8" className="twinkle-star-2" />
+              <circle cx="330" cy="480" r="1.2" className="twinkle-star-1" />
+            </g>
+
+            {/* Scattered faint reddish/orange distant stars */}
+            <g fill="#ff5e3a">
+              <circle cx="180" cy="150" r="1" className="twinkle-star-3" />
+              <circle cx="640" cy="220" r="1.2" className="twinkle-star-1" />
+              <circle cx="250" cy="320" r="0.9" className="twinkle-star-2" />
+              <circle cx="580" cy="340" r="1" className="twinkle-star-3" />
+              <circle cx="380" cy="80" r="1.1" className="twinkle-star-1" />
+            </g>
+          </svg>
+        </div>
+      </div>
 
       <div className="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         {/* Left Side: Image / Profile Initial Circle */}
         <div className="flex justify-center md:justify-start">
-          <div className={`w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-4 overflow-hidden flex items-center justify-center ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-navy-50 border-navy-600'
-            }`}>
+          <div
+            className={`w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-4 overflow-hidden flex items-center justify-center shadow-xl ${
+              darkMode ? 'bg-gray-800 border-gray-700' : 'bg-navy-50 border-navy-600'
+            }`}
+          >
             <img
               src={profile.profileImage}
               alt="Profile"
@@ -53,23 +152,33 @@ export default function Hero({ darkMode, lang }) {
 
         {/* Right Side: Text and Actions */}
         <div>
-          <p className={`font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-tight ${darkMode ? 'text-white' : 'text-black'
-            }`}>
+          <p
+            className={`font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-tight ${
+              darkMode ? 'text-white' : 'text-black'
+            }`}
+          >
             {lang === 'jp'
               ? (() => {
-                const hour = new Date().getHours()
-                if (hour >= 5 && hour < 12) return 'おはようございます、' // Morning (5 AM - 12 PM)
-                if (hour >= 12 && hour < 18) return 'こんにちは、'     // Afternoon (12 PM - 6 PM)
-                return 'こんばんは、'                             // Evening/Night (6 PM - 5 AM)
-              })()
+                  const hour = new Date().getHours()
+                  if (hour >= 5 && hour < 12) return 'おはようございます、' // Morning (5 AM - 12 PM)
+                  if (hour >= 12 && hour < 18) return 'こんにちは、' // Afternoon (12 PM - 6 PM)
+                  return 'こんばんは、' // Evening/Night (6 PM - 5 AM)
+                })()
               : 'Hello,'}
           </p>
-          <p className={`font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-tight mt-1 ${darkMode ? 'text-white' : 'text-black'
-            }`}>
+          <p
+            className={`font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-tight mt-1 ${
+              darkMode ? 'text-white' : 'text-black'
+            }`}
+          >
             {lang === 'jp' ? (
-              <><span className="text-amber-500">ピィエピョーアウン</span> です</>
+              <>
+                <span className="text-amber-500">ピィエピョーアウン</span> です
+              </>
             ) : (
-              <>I'm <span className="text-amber-500">{profile.name}</span></>
+              <>
+                I'm <span className="text-amber-500">{profile.name}</span>
+              </>
             )}
           </p>
           <p className={`mt-5 md:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>
@@ -81,7 +190,7 @@ export default function Hero({ darkMode, lang }) {
 
           <a
             href="#about"
-            className="inline-flex items-center gap-2 mt-8 bg-navy-600 hover:bg-navy-700 text-white font-medium px-6 py-3 rounded-full transition-colors"
+            className="inline-flex items-center gap-2 mt-8 bg-navy-600 hover:bg-navy-700 text-white font-medium px-6 py-3 rounded-full transition-colors shadow-md"
           >
             {lang === 'jp' ? '私について' : 'About Me'}
             <span aria-hidden>↓</span>
@@ -123,7 +232,7 @@ export default function Hero({ darkMode, lang }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-10 h-10 flex items-center justify-center rounded-full text-white hover:opacity-90 transition-opacity"
+                  className="w-10 h-10 flex items-center justify-center rounded-full text-white hover:opacity-90 transition-opacity shadow-sm"
                   style={{ backgroundColor: '#ff5e3a' }}
                 >
                   {iconSvg}
