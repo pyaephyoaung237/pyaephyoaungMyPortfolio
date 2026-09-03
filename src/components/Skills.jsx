@@ -46,16 +46,16 @@ function SkillCard({ skill, darkMode }) {
 
   return (
     <div
-      className={`relative rounded-xl px-4 py-6 flex flex-col items-center gap-3 transition-colors duration-300 ${
+      className={`relative rounded-xl px-2 py-4 md:px-4 md:py-6 flex flex-col items-center gap-2.5 md:gap-3 transition-colors duration-300 ${
         darkMode 
-          ? 'bg-gray-800/80 border border-gray-700 shadow-sm' 
-          : 'bg-white border border-transparent shadow-sm'
+          ? 'bg-gray-800/80 shadow-sm' 
+          : 'bg-white shadow-sm'
       }`}
     >
-      <span className={`w-12 h-12 rounded-full ${iconBg} flex items-center justify-center text-2xl ${iconColor}`}>
+      <span className={`w-10 h-10 md:w-12 md:h-12 rounded-full ${iconBg} flex items-center justify-center text-xl md:text-2xl ${iconColor}`}>
         {IconComponent || skill.name.slice(0, 2).toUpperCase()}
       </span>
-      <span className={`font-medium text-sm text-center transition-colors duration-300 ${
+      <span className={`font-medium text-xs md:text-sm text-center transition-colors duration-300 ${
         darkMode ? 'text-gray-200' : 'text-black'
       }`}>
         {skill.name}
@@ -89,7 +89,7 @@ export default function Skills({ darkMode, lang }) {
            >
              <span className="inline-flex items-center justify-center gap-2.5">
                <Code className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} />
-               <span className={darkMode ? 'text-white' : 'text-black'}>
+               <span className={darkMode ? 'text-white' : 'text-navy-600'}>
                  {lang === 'jp' ? 'テクニカルスキル' : 'Technical Skills'}
                </span>
              </span>
@@ -100,7 +100,7 @@ export default function Skills({ darkMode, lang }) {
            </h2>
          </div>
 
-        <p className={`text-center mb-1 md:text-base ${darkMode ? 'text-gray-300' : 'text-gray-900'}`}>
+        <p className={`text-center mb-1 text-sm md:text-base ${darkMode ? 'text-gray-300' : 'text-gray-900'}`}>
           {lang === 'jp' ? '普段使っているツールやテクノロジー' : 'The tools and technologies I work with on a daily basis'}
         </p>
 
@@ -108,16 +108,16 @@ export default function Skills({ darkMode, lang }) {
           {Object.entries(groupedSkills).map(([categoryName, categorySkills]) => (
             <div 
               key={categoryName} 
-              className={`rounded-2xl p-6 md:p-8 shadow-sm transition-colors ${
-                darkMode ? 'bg-gray-800/50 border border-gray-800' : 'bg-white border border-gray-100'
+              className={`rounded-2xl p-4 md:p-8 shadow-sm transition-colors ${
+                darkMode ? 'bg-gray-800/50' : 'bg-white border border-gray-100'
               }`}
             >
-              <h3 className={`text-xl font-bold mb-6 pb-2 inline-block border-b-2 ${
-                darkMode ? 'text-white border-[#ff5e3a]' : 'text-black border-black'
+              <h3 className={`text-lg md:text-xl font-bold mb-4 md:mb-6 pb-2 inline-block border-b-2 ${
+                darkMode ? 'text-white border-[#ff5e3a]' : 'text-navy-600 border-black'
               }`}>
                 {categoryName}
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5">
+              <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-5">
                 {categorySkills.map((skill) => (
                   <SkillCard key={skill.name} skill={skill} darkMode={darkMode} />
                 ))}

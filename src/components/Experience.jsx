@@ -1,20 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import { experience } from '../data'
-import useScrollAnimation from '../hooks/useScrollAnimation'
 import { Briefcase, Building2 } from 'lucide-react'
 
 function ExperienceItem({ item, index, darkMode, lang }) {
   const isLeft = index % 2 === 0
-  const fromSide = isLeft ? 'reveal-left' : 'reveal-right'
-  const [ref, isVisible] = useScrollAnimation({ threshold: 0.25 })
 
   return (
     <div className="relative pl-10 md:pl-0 md:grid md:grid-cols-2 md:gap-0 items-center">
       {/* Content slot */}
       <div className={`md:pr-12 ${isLeft ? '' : 'md:order-2 md:pl-12 md:pr-0'}`}>
         <div
-          ref={ref}
-          className={`${fromSide} ${isVisible ? 'is-visible' : ''} ${
+          className={`${
             darkMode ? 'bg-gray-800/90 border border-gray-700 text-gray-100' : 'bg-navy-600 text-white'
           } rounded-xl p-4 md:px-6 md:py-5 shadow-md`}
         >
@@ -51,7 +47,6 @@ function ExperienceItem({ item, index, darkMode, lang }) {
 }
 
 export default function Experience({ darkMode, lang }) {
-  const [headingRef, headingVisible] = useScrollAnimation({ threshold: 0.4 })
   const containerRef = useRef(null)
   const [scrollProgress, setScrollProgress] = useState(0)
 
@@ -87,8 +82,7 @@ export default function Experience({ darkMode, lang }) {
         {/* Title with Building2 icon in front */}
         <div className="text-center mb-5">
           <h2
-            ref={headingRef}
-            className={`reveal ${headingVisible ? 'is-visible' : ''} relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl ${
+            className={`relative pb-4 inline-block font-display font-bold text-2xl md:text-3xl ${
               darkMode ? 'text-white' : 'text-black'
             }`}
           >
@@ -113,7 +107,7 @@ export default function Experience({ darkMode, lang }) {
 
           {/* Active Animated Progress Line */}
           <div 
-            className="absolute top-0 left-4 md:left-1/2 -translate-x-1/2 w-1.5 transition-all duration-500 ease-out z-10"
+            className="absolute top-0 left-4 md:left-1/2 -translate-x-1/2 w-1.5 transition-all duration-75 ease-out z-10"
             style={{ 
               height: `${scrollProgress}%`, 
               backgroundColor: '#ff5e3a' 

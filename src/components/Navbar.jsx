@@ -80,7 +80,7 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors transition-shadow ${
-        darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'
+        darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'
       } ${scrolled ? 'shadow-md' : 'shadow-none'}`}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-10 h-16 md:h-16 flex items-center justify-between">
@@ -111,7 +111,7 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
                   className={`relative font-medium text-sm tracking-wide transition-colors ${
                     active === link.href
                       ? darkMode
-                        ? 'text-[#ff5e3a]'
+                        ? 'text-white'
                         : 'text-navy-600'
                       : darkMode
                       ? 'text-gray-300 hover:text-white'
@@ -140,8 +140,8 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
               aria-label="Toggle dark mode"
               className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm ${
                 darkMode
-                  ? 'bg-gray-800 text-[#ff5e3a] hover:bg-gray-700'
-                  : 'bg-gray-100 text-navy-600 hover:bg-gray-200'
+                  ? 'bg-gray-800 text-white bg-gray-600'
+                  : 'bg-gray-100 text-navy-600 bg-gray-200'
               }`}
             >
               {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -152,7 +152,7 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
               aria-label="Switch language"
               className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm overflow-hidden p-2 ${
                 darkMode
-                  ? 'bg-gray-800 hover:bg-gray-700'
+                  ? 'bg-gray-800 hover:bg-gray-600'
                   : 'bg-gray-100 hover:bg-gray-200'
               }`}
             >
@@ -171,7 +171,7 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
               aria-label="Toggle dark mode"
               className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm ${
                 darkMode
-                  ? 'bg-gray-800 text-[#ff5e3a] hover:bg-gray-700'
+                  ? 'bg-gray-800 text-white hover:bg-gray-700'
                   : 'bg-gray-100 text-navy-600 hover:bg-gray-200'
               }`}
             >
@@ -209,7 +209,7 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
       {/* Mobile menu */}
       <div
         className={`md:hidden overflow-hidden transition-[max-height] duration-300 ease-in-out ${
-          darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'
+          darkMode ? 'bg-gray-800 border-gray-800' : 'bg-white border-gray-100'
         } border-t ${isOpen ? 'max-h-[85vh] overflow-y-auto' : 'max-h-0'}`}
       >
         <ul className="flex flex-col px-5 py-3">

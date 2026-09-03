@@ -14,7 +14,7 @@ export const profile = {
   firstName: 'Pyae',
   rolesList: [
     'Web development',
-    'Full Stack development',
+    'Fullstack development',
     'Software Engineering',
   ],
   tagline: 'Full Stack developer',
@@ -31,7 +31,7 @@ export const profile = {
   socials: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/pyae-phyo-aung-1a3923346', text: 'IN' },
     { label: 'GitHub', href: 'https://github.com/pyaephyoaung237', text: 'GH' },
-    { label: 'Twitter', href: '#', text: 'TW' },
+    
     { label: 'Email', href: 'mailto:pyaephyoaung2377@gmail.com', text: '@' },
   ],
 }

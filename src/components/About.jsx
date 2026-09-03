@@ -25,7 +25,7 @@ export default function About({ darkMode, lang }) {
           }`}>
             <span className="inline-flex items-center justify-center gap-2.5">
               <User className="w-6 h-6 shrink-0" style={{ color: '#ff5e3a' }} />
-              <span className={darkMode ? 'text-white' : 'text-black'}>
+              <span className={darkMode ? 'text-white' : 'text-navy-600'}>
                 {lang === 'jp' ? '私について' : 'About'}
               </span>
             </span>

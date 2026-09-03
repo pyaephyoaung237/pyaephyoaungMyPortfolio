@@ -11,7 +11,7 @@ import Footer from './components/Footer'
 import Contact from './components/Contact'
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
   const [lang, setLang] = useState('en')
 
   return (
