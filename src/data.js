@@ -153,7 +153,8 @@ export const work = [
       'マンガ、チャプター、ユーザー、コイン、ギフト管理のための管理ダッシュボード',
       '正確で信頼性の高いユーザー入力を実現するフォームおよび日付のバリデーション'
     ],
-    languages: ['Laravel', 'Docker', 'MySQL', 'Tailwind CSS', 'Google OAuth']
+    languages: ['Laravel', 'Docker', 'MySQL', 'Tailwind CSS', 'Google OAuth'],
+    codelink:'https://github.com/pyaephyoaung237/MangaTaiLaravelProject',
   },
   {
     title: 'Saleway Tracking System',
@@ -196,8 +197,10 @@ export const work = [
       'テストケースの作成と機能テスト',
       '効率的な在庫・売上データ検索のための最適化されたデータベースクエリ'
     ],
-    languages: ['Laravel', 'React', 'MySQL', 'Tailwind CSS', 'Docker', 'Redis', 'Cobol']
+    languages: ['Laravel', 'React', 'MySQL', 'Tailwind CSS', 'Docker', 'Redis', 'Cobol'],
+    codelink:'https://github.com/pyaephyoaung237/NextRouteSaleWayTrackingSystem'
   },
+
   {
     title: 'GuitarHub',
     tag: 'Ecommerce',
@@ -219,7 +222,8 @@ export const work = [
       'ショッピングカートとシームレスなチェックアウトパイプライン',
       '管理者向け在庫管理ダッシュボード'
     ],
-    languages: ['SpringBoot', 'Blade', 'Bootstrap', 'MySQL']
+    languages: ['SpringBoot', 'Blade', 'Bootstrap', 'MySQL'],
+    codelink:'https://github.com/pyaephyoaung237/SpringWebProject_ecommerce_website'
   },
 ]
 

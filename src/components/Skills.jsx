@@ -23,12 +23,12 @@ const iconMap = {
   'Redis': { icon: <SiRedis />, color: 'text-red-600' },
   'Docker': { icon: <FaDocker />, color: 'text-blue-500' },
   'AWS': { icon: <FaAws />, color: 'text-amber-500' },
-  'GitHub': { icon: <FaGithub />, color: 'text-gray-800 dark:text-gray-200' },
+  'GitHub': { icon: <FaGithub />, color: 'text-gray-800 dark:text-gray-500' },
   'Kubernetes': { icon: <SiKubernetes />, color: 'text-blue-600' },
   'shell script': { icon: '</>', color: 'text-emerald-600' },
   'Linux': { icon: <FaLinux />, color: 'text-yellow-700 dark:text-yellow-400' },
   'Windows': { icon: <FaWindows />, color: 'text-sky-500' },
-  'MacOS': { icon: <FaApple />, color: 'text-gray-800 dark:text-gray-200' },
+  'MacOS': { icon: <FaApple />, color: 'text-gray-800 dark:text-gray-500' },
 }
 
 const groupLabels = {

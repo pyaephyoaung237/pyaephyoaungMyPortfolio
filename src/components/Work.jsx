@@ -6,6 +6,7 @@ import {
   FaCheckCircle,
   FaLayerGroup,
   FaTimes,
+  FaGithub,
 } from 'react-icons/fa'
 import { FolderGit2 } from 'lucide-react'
 
@@ -37,14 +38,28 @@ function WorkCard({ item, onViewProject, darkMode, lang }) {
         )}
 
         {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-navy-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <div className="absolute inset-0 bg-navy-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
           <button
             onClick={() => onViewProject(item)}
-            className="px-5 py-2.5 bg-white text-navy-600 font-semibold rounded-lg shadow-md hover:bg-navy-600 hover:text-white transition-colors duration-300 flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0"
+            className="px-4 py-2.5 bg-white text-navy-600 font-semibold rounded-lg shadow-md hover:bg-navy-600 hover:text-white transition-colors duration-300 flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 text-xs sm:text-sm"
           >
-            <span>{lang === 'jp' ? 'プロジェクト詳細' : 'Project Details'}</span>
+            <span>{lang === 'jp' ? '詳細' : 'Details'}</span>
             <FaExternalLinkAlt className="text-xs" />
           </button>
+
+          {item.codelink && (
+            <a
+              href={item.codelink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="px-4 py-2.5 bg-navy-600 text-white font-semibold rounded-lg shadow-md hover:bg-navy-700 transition-colors duration-300 flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 text-xs sm:text-sm"
+              aria-label="View source code on GitHub"
+            >
+              <FaGithub className="text-sm" />
+              <span>Code</span>
+            </a>
+          )}
         </div>
       </div>
 
@@ -53,9 +68,22 @@ function WorkCard({ item, onViewProject, darkMode, lang }) {
         darkMode ? 'bg-gray-800/80 border-gray-700' : 'bg-white border-gray-100'
       }`}>
         <div>
-          <p className={`font-bold text-lg ${darkMode ? 'text-gray-100' : 'text-navy-600'}`}>
-            {lang === 'jp' && item.titleJp ? item.titleJp : item.title}
-          </p>
+          <div className="flex items-center justify-between gap-2">
+            <p className={`font-bold text-lg ${darkMode ? 'text-gray-100' : 'text-navy-600'}`}>
+              {lang === 'jp' && item.titleJp ? item.titleJp : item.title}
+            </p>
+            {item.codelink && (
+              <a
+                href={item.codelink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-gray-400 hover:text-[#ff5e3a] transition-colors ${darkMode ? 'hover:text-white' : ''}`}
+                title="GitHub Repository"
+              >
+                <FaGithub className="w-4 h-4" />
+              </a>
+            )}
+          </div>
 
           <p className={`text-xs mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             {lang === 'jp' && item.tagJp ? item.tagJp : item.tag}
@@ -119,6 +147,22 @@ function ProjectDetailModal({ project, onClose, darkMode, lang }) {
               {lang === 'jp' && project.titleJp ? project.titleJp : project.title}
             </h3>
           </div>
+
+          {project.codelink && (
+            <a
+              href={project.codelink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-colors ${
+                darkMode 
+                  ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+              }`}
+            >
+              <FaGithub />
+              <span>{lang === 'jp' ? 'ソースコード' : 'Source Code'}</span>
+            </a>
+          )}
         </div>
 
         {/* System Overview */}

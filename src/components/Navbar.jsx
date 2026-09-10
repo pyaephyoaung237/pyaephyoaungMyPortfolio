@@ -142,7 +142,7 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
             <span className="inline-flex items-center justify-center w-9 h-9 rounded-md">
               {'</>'}
             </span>
-            {lang === 'jp' ? 'ピィエピョーアウン' : 'PyaePhyoAung'}
+            {lang === 'jp' ? 'ピィエ' : 'Pyae'}
           </a>
         </div>
 

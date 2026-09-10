@@ -35,7 +35,7 @@ export default function Footer({ darkMode, lang }) {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors duration-200 hover:text-[#ff5e3a] ${darkMode ? 'text-gray-300 hover:text-white' : 'text-black hover:text-[#ff5e3a]'
+                  className={`text-sm font-medium transition-colors duration-200 hover:text-navy-600 ${darkMode ? 'text-gray-300 hover:text-white' : 'text-black hover:text-[#ff5e3a]'
                     }`}
                 >
                   {labelText}
