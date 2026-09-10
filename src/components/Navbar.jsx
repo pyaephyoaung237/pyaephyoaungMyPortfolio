@@ -77,6 +77,52 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
     return label
   }
 
+  // Adjusted Language Switch Component (No text overlap)
+  const LanguageSwitch = () => (
+    <button
+      onClick={toggleLanguage}
+      aria-label="Switch language"
+      className={`relative flex items-center w-20 h-9 rounded-full transition-colors shadow-inner px-1.5 ${
+        darkMode ? 'border border-gray-600' : 'border border-gray-300 '
+      }`}
+    >
+      {/* Text shown on the right when EN is active */}
+      <span
+        className={`absolute right-3 text-xs font-bold transition-opacity duration-200 ${
+          lang === 'en'
+            ? darkMode ? 'text-gray-400 opacity-100' : 'text-gray-500 opacity-100'
+            : 'opacity-0'
+        }`}
+      >
+        JP
+      </span>
+
+      {/* Text shown on the left when JP is active */}
+      <span
+        className={`absolute left-3 text-xs font-bold transition-opacity duration-200 ${
+          lang === 'jp'
+            ? darkMode ? 'text-gray-400 opacity-100' : 'text-gray-500 opacity-100'
+            : 'opacity-0'
+        }`}
+      >
+        EN
+      </span>
+
+      {/* Sliding Flag Thumb */}
+      <div
+        className={`absolute top-1 bottom-1 w-7 h-7  rounded-full  flex items-center justify-center p-1 transition-transform duration-300 ease-in-out ${
+          lang === 'jp' ? 'translate-x-[44px]' : 'translate-x-0'
+        }`}
+      >
+        <img
+          src={lang === 'en' ? ukflag : jpflag}
+          alt={lang === 'en' ? 'UK Flag' : 'Japan Flag'}
+          className="w-full h-full object-contain"
+        />
+      </div>
+    </button>
+  )
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors transition-shadow ${
@@ -138,30 +184,16 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
             <button
               onClick={toggleDarkMode}
               aria-label="Toggle dark mode"
-              className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm ${
+              className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors  ${
                 darkMode
-                  ? 'bg-gray-800 text-white hover:bg-gray-600'
-                  : 'bg-gray-100 text-navy-600 '
+                  ? 'border border-gray-600 text-white '
+                  : 'border border-gray-300 text-navy-600 '
               }`}
             >
               {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
-            <button
-              onClick={toggleLanguage}
-              aria-label="Switch language"
-              className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm overflow-hidden p-2 ${
-                darkMode
-                  ? 'bg-gray-800 hover:bg-gray-600'
-                  : 'bg-gray-100 hover:bg-gray-200'
-              }`}
-            >
-              <img
-                src={lang === 'en' ? ukflag : jpflag}
-                alt={lang === 'en' ? 'UK Flag' : 'Japan Flag'}
-                className="w-full h-full object-contain"
-              />
-            </button>
+            <LanguageSwitch />
           </div>
 
           {/* Mobile Right Actions */}
@@ -171,29 +203,17 @@ export default function Navbar({ darkMode, setDarkMode, lang, setLang }) {
               aria-label="Toggle dark mode"
               className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm ${
                 darkMode
-                  ? 'bg-gray-800 text-white hover:bg-gray-600'
-                  : 'bg-gray-100 text-navy-600 hover:bg-gray-200'
+                  ? ' text-white border border-gray-600'
+                  : ' text-navy-600 border border-gray-300'
               }`}
             >
               {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
-            <button
-              onClick={toggleLanguage}
-              aria-label="Switch language"
-              className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm overflow-hidden p-2 ${
-                darkMode ? 'bg-gray-800' : 'bg-gray-100'
-              }`}
-            >
-              <img
-                src={lang === 'en' ? ukflag : jpflag}
-                alt={lang === 'en' ? 'UK Flag' : 'Japan Flag'}
-                className="w-full h-full object-contain"
-              />
-            </button>
+            <LanguageSwitch />
 
             <button
-              className="flex flex-col justify-center items-center gap-1.5 w-10 h-10"
+              className="flex flex-col justify-center items-center gap-1.5 w-10 h-10 ml-1"
               aria-label="Toggle navigation menu"
               aria-expanded={isOpen}
               onClick={() => setIsOpen((v) => !v)}
