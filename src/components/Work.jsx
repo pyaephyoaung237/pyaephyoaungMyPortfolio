@@ -155,8 +155,8 @@ function ProjectDetailModal({ project, onClose, darkMode, lang }) {
               rel="noopener noreferrer"
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-colors ${
                 darkMode 
-                  ? 'bg-gray-700 hover:bg-gray-600 text-white' 
-                  : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+                  ? ' text-white' 
+                  : ' text-gray-900'
               }`}
             >
               <FaGithub />
