@@ -305,7 +305,7 @@ export default function Contact({ darkMode, lang }) {
         <div className="flex flex-col items-center justify-center py-3 md:py-3">
           <button
             onClick={() => setShowTerminal(true)}
-            className="group relative inline-flex items-center gap-3 bg-[#300a24] text-white font-mono text-xs sm:text-sm px-6 py-3.5 rounded-xl border border-purple-900/60 shadow-xl transition-all duration-200 active:scale-95"
+            className="group relative inline-flex items-center gap-3 bg-[#300a24] text-white font-mono text-xs sm:text-sm px-6 py-3.5 rounded-xl  shadow-xl transition-all duration-200 active:scale-95"
           >
             {/* Ubuntu orange dot accent */}
             <span className="w-3 h-3 rounded-full bg-orange-500 shadow-sm animate-pulse shrink-0"></span>

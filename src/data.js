@@ -8,6 +8,7 @@ import internshipCompletion from './assets/internCompleted.jpg';
 import guitarhub from './assets/guitar.jpg';
 import mangatai from './assets/manga.jpg';
 import saleway from './assets/saleway.jpg';
+import sweetice from './assets/sweetIce.jpg';
 
 export const profile = {
   name: 'Pyae Phyo Aung',
@@ -52,6 +53,8 @@ export const skills = [
   { name: 'CSS', group: 'frontend' },
   { name: 'JavaScript', group: 'frontend' },
   { name: 'React', group: 'frontend' },
+  { name: 'Next.js', group: 'frontend' },
+  { name: 'TypeScript', group: 'frontend' },
   { name: 'Bootstrap', group: 'frontend' },
   { name: 'Tailwind CSS', group: 'frontend' },
   { name: 'Java', group: 'backend' },
@@ -120,6 +123,30 @@ export const education = [
 ]
 
 export const work = [
+{
+  title: 'SweetIce',
+  tag: 'Ecommerce',
+  tagJp: 'Eコマース',
+  category: 'Web Application',
+  categoryJp: 'ウェブアプリケーション',
+  image: sweetice,
+  overview: 'A modern ice cream e-commerce web application where users can browse ice cream products, add items to their cart, and place orders, with an admin dashboard for managing products and users.',
+  overviewJp: 'ユーザーがアイスクリーム商品を閲覧し、カートに追加して注文できるモダンなEコマースウェブアプリケーションです。管理者はダッシュボードから商品とユーザーを管理できます。',
+  keyFeatures: [
+    'User-friendly ice cream product catalog',
+    'User authentication and account management',
+    'Shopping cart and order placement',
+    'Admin dashboard for product and user management'
+  ],
+  keyFeaturesJp: [
+    '使いやすいアイスクリーム商品カタログ',
+    'ユーザー認証とアカウント管理',
+    'ショッピングカートと注文機能',
+    '商品・ユーザー管理のための管理者ダッシュボード'
+  ],
+  languages: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS','Pg'],
+  codelink: 'https://github.com/pyaephyoaung237/SweetIceCreamEcommerce',
+},
   {
     title: 'MangaTai',
     tag: 'MangaReader',
